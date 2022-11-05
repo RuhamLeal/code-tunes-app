@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import React from 'react';
+import Login from './pages/Login.jsx';
+import Album from './pages/Album.jsx';
+import Favorites from './pages/Favorites.jsx';
+import Profile from './pages/Profile.jsx';
+import Search from './pages/Search.jsx';
+import EditProfile from './pages/EditProfile.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+    <Route exact path="/" component={ Login } />
+    <Route exact path="/album/:id" component={ Album } />
+    <Route exact path="/favorites" component={ Favorites } />
+    <Route exact path="/profile" component={ Profile } />
+    <Route exact path="/search" component={ Search } />
+    <Route exact path="/profile/edit" component={ EditProfile } />
+    <Route path="/:notFound" component={ NotFound } />
+  </Switch>
   );
 }
 
