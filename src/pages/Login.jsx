@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
+import LoginField from '../components/LoginField';
 
-function Login() {
+function Login({ history }) {
   return (
-    <div>Login</div>
-  )
+    <section>
+      <LoginField history={history} />
+    </section>
+  );
 }
 
-export default Login
+Login.propTypes = {
+  history: PropTypes.shape().isRequired,
+};
+
+export default Login;
