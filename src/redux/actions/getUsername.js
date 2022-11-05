@@ -4,7 +4,7 @@ export default function getUsername(username) {
   return {
     type: GET_USERNAME,
     payload: {
-      username,
+      username: username.current.value,
     },
   };
 }
