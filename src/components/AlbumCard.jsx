@@ -10,7 +10,7 @@ function AlbumCard({
 
   return (
     <Link to={`/album/${id}`}>
-      <Card style={{ width: '300px' }}>
+      <Card border="success" style={{ width: '300px' }}>
         <Card.Img variant="top" src={qualityImg} />
         <Card.Body>
           <Card.Title>{albumName}</Card.Title>
