@@ -15,6 +15,8 @@ function Albums({ albums, albumsQuant, artist }) {
       <h2>{`Foram encontrados ${albumsQuant} albums de ${artist}:`}</h2>
       { albums.map((album) => (
         <AlbumCard
+          key={album.collectionId}
+          id={album.collectionId}
           img={album.artworkUrl100}
           albumName={album.collectionName}
           artistName={album.artistName}
