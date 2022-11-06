@@ -10,7 +10,7 @@ import getAlbums from '../redux/actions/getAlbums';
 function SearchField({ dispatch }) {
   const searchRef = useRef(null);
 
-  const HandleSearch = () => {
+  const handleSearch = () => {
     dispatch(getAlbums(searchRef.current.value));
   };
 
@@ -23,7 +23,7 @@ function SearchField({ dispatch }) {
       >
         <Form.Control ref={searchRef} type="text" placeholder="Search" />
       </FloatingLabel>
-      <Button onClick={HandleSearch} variant="Secondary" type="button">
+      <Button onClick={handleSearch} variant="Secondary" type="button">
         <BsSearch />
       </Button>
     </section>

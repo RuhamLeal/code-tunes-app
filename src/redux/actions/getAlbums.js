@@ -12,6 +12,7 @@ export default function getAlbums(query) {
         type: GET_ALBUMS,
         payload: {
           data,
+          query,
         },
       });
     } catch (err) {
