@@ -1,8 +1,11 @@
 import React from 'react';
+import Header from '../components/Header.jsx';
 
 function Favorites() {
   return (
-    <div>Favorites</div>
+    <main>
+      <Header />
+    </main>
   );
 }
 

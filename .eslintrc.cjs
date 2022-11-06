@@ -20,5 +20,7 @@ module.exports = {
     'import/extensions': 'off',
     'react/jsx-filename-extension': 'off',
     'default-param-last': 'off',
+    'import/no-unresolved': 'off',
+    'react/jsx-no-constructed-context-values': 'off',
   },
 };

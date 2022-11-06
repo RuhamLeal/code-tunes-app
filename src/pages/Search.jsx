@@ -1,8 +1,11 @@
 import React from 'react';
+import Header from '../components/Header.jsx';
 
 function Search() {
   return (
-    <div>Search</div>
+    <main>
+      <Header />
+    </main>
   );
 }
 

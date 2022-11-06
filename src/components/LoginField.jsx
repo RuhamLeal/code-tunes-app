@@ -2,19 +2,20 @@ import React, { useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
-import getUsername from '../redux/actions/getUsername.js';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 import loginValidate from '../helpers/loginValidate.js';
 
-function LoginField({ history, dispatch }) {
+function LoginField({ history }) {
   const userNameRef = useRef(null);
   const passwordRef = useRef(null);
+  const [form] = useAutoAnimate();
   const [emptyFields, setEmptyFields] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (loginValidate(userNameRef, passwordRef)) {
-      dispatch(getUsername(userNameRef));
+      localStorage.setItem('username', userNameRef.current.value);
       history.push('/search');
     } else {
       setEmptyFields(true);
@@ -22,7 +23,7 @@ function LoginField({ history, dispatch }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form ref={form} onSubmit={handleSubmit}>
       <FloatingLabel
         controlId="floatingInput"
         label="Username"
@@ -40,7 +41,6 @@ function LoginField({ history, dispatch }) {
 }
 
 LoginField.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,

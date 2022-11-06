@@ -1,8 +1,11 @@
 import React from 'react';
+import Header from '../components/Header.jsx';
 
 function Profile() {
   return (
-    <div>Profile</div>
+    <main>
+      <Header />
+    </main>
   );
 }
 

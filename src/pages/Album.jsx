@@ -1,8 +1,11 @@
 import React from 'react';
+import Header from '../components/Header.jsx';
 
 function Album() {
   return (
-    <div>Album</div>
+    <main>
+      <Header />
+    </main>
   );
 }
 
