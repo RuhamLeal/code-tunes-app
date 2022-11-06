@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
+import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 
 function AlbumCard({
@@ -19,5 +19,12 @@ function AlbumCard({
     </Card>
   );
 }
+
+AlbumCard.propTypes = {
+  img: PropTypes.string.isRequired,
+  albumName: PropTypes.string.isRequired,
+  artistName: PropTypes.string.isRequired,
+  albumGenre: PropTypes.string.isRequired,
+};
 
 export default AlbumCard;
