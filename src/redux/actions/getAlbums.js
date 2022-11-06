@@ -1,4 +1,4 @@
-import GET_ALBUMS from './types.js';
+import { GET_ALBUMS } from './types.js';
 
 export default function getAlbums(query) {
   const queryUrl = encodeURI(query).replaceAll('%20', '+');

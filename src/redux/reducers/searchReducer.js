@@ -1,4 +1,4 @@
-import GET_ALBUMS from '../actions/types.js';
+import { GET_ALBUMS } from '../actions/types.js';
 
 const INITIAL_STATE = {
   albumData: null,
