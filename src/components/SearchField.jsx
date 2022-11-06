@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import { BsSearch } from 'react-icons/bs';
 import Button from 'react-bootstrap/Button';
+import { connect } from 'react-redux';
+import getAlbums from '../redux/actions/getAlbums';
 
-function FormFloatingBasicExample() {
+function SearchField({ dispatch }) {
+  const searchRef = useRef(null);
+
+  const HandleSearch = () => {
+    dispatch(getAlbums(searchRef.current.value));
+  };
+
   return (
     <section>
       <FloatingLabel
@@ -12,13 +21,17 @@ function FormFloatingBasicExample() {
         label="Search"
         className="mb-3"
       >
-        <Form.Control type="text" placeholder="Search" />
+        <Form.Control ref={searchRef} type="text" placeholder="Search" />
       </FloatingLabel>
-      <Button variant="Secondary" type="button">
+      <Button onClick={HandleSearch} variant="Secondary" type="button">
         <BsSearch />
       </Button>
     </section>
   );
 }
 
-export default FormFloatingBasicExample;
+SearchField.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
+
+export default connect()(SearchField);

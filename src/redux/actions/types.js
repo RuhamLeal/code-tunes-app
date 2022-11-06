@@ -1,3 +1,3 @@
-const GET_USERNAME = 'GET_USERNAME';
+const GET_ALBUMS = 'GET_ALBUMS';
 
-export default GET_USERNAME;
+export default GET_ALBUMS;
