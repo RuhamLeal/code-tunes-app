@@ -1,5 +1,5 @@
 {
-  "name": "code-tunes-app",
+  "name": "code-tunes-app-frontend",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,9 +10,6 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.1.3",
     "bootstrap": "^5.2.2",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "mongoose": "^6.6.7",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
@@ -26,11 +23,10 @@
     "redux-thunk": "^2.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=4000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev": "nodemon ./backend/server.js"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -52,12 +48,11 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^1.3.3",
-    "eslint": "^8.26.0",
+    "eslint": "^8.27.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.10",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "nodemon": "^2.0.20"
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }

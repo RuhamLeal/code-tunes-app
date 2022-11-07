@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import loginValidate from '../helpers/loginValidate.js';
+import api from '../services/api.js';
 
 function LoginField({ history }) {
   const userNameRef = useRef(null);
@@ -11,12 +12,17 @@ function LoginField({ history }) {
   const [form] = useAutoAnimate();
   const [emptyFields, setEmptyFields] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (loginValidate(userNameRef, passwordRef)) {
       localStorage.setItem('username', userNameRef.current.value);
-      history.push('/search');
+      const response = await api.post('/login', {
+        userName: userNameRef.current.value,
+        passWord: passwordRef.current.value,
+      });
+      console.log('console.log', response);
+      /* history.push('/search'); */
     } else {
       setEmptyFields(true);
     }

@@ -1,19 +1,19 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
+  'env': {
+    'browser': true,
+    'es2021': true,
   },
-  extends: [
+  'extends': [
     'plugin:react/recommended',
     'airbnb',
   ],
-  overrides: [
+  'overrides': [
   ],
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
+  'parserOptions': {
+    'ecmaVersion': 'latest',
+    'sourceType': 'module',
   },
-  plugins: [
+  'plugins': [
     'react',
   ],
   rules: {
@@ -21,7 +21,6 @@ module.exports = {
     'react/jsx-filename-extension': 'off',
     'default-param-last': 'off',
     'import/no-unresolved': 'off',
-    'react/jsx-no-constructed-context-values': 'off',
     'no-console': 'off',
     'quote-props': 'off',
     'dot-notation': 'off',
