@@ -5,25 +5,34 @@ import { FloatingLabel, Form, Button } from 'react-bootstrap';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import loginValidate from '../helpers/loginValidate.js';
 import api from '../services/api.js';
+import { setLocalStorageUser } from '../helpers/localStorage.js';
 
 function LoginField({ history }) {
   const userNameRef = useRef(null);
   const passwordRef = useRef(null);
   const [form] = useAutoAnimate();
   const [emptyFields, setEmptyFields] = useState(false);
+  const [NotFoundUser, setNotFoundUser] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (loginValidate(userNameRef, passwordRef)) {
-      localStorage.setItem('username', userNameRef.current.value);
-      const response = await api.post('/login', {
-        userName: userNameRef.current.value,
-        passWord: passwordRef.current.value,
-      });
-      console.log('console.log', response);
-      /* history.push('/search'); */
+      try {
+        const response = await api.post('/login', {
+          userName: userNameRef.current.value,
+          passWord: passwordRef.current.value,
+        });
+        setLocalStorageUser(userNameRef.current.value, response.data.userId);
+        history.push('/search');
+      } catch (err) {
+        if (err.response.data.message === 'Usuario não encontrado ou inexistente') {
+          setEmptyFields(false);
+          setNotFoundUser(true);
+        }
+      }
     } else {
+      setNotFoundUser(false);
       setEmptyFields(true);
     }
   };
@@ -41,6 +50,7 @@ function LoginField({ history }) {
         <Form.Control ref={passwordRef} type="password" placeholder="Password" />
       </FloatingLabel>
       { emptyFields ? <h6> ! Preencha todos os campos</h6> : null }
+      { NotFoundUser ? <h6> ! Login ou senha incorretos</h6> : null }
       <Button type="Submit" variant="primary">Entrar</Button>
     </form>
   );

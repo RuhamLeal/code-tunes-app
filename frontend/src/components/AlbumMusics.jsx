@@ -44,8 +44,13 @@ function AlbumMusics({ dispatch, album, musics }) {
 
 AlbumMusics.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  album: PropTypes.shape().isRequired,
-  musics: PropTypes.arrayOf(shape()).isRequired,
+  album: PropTypes.shape(),
+  musics: PropTypes.arrayOf(shape()),
+};
+
+AlbumMusics.defaultProps = {
+  album: null,
+  musics: null,
 };
 
 const mapStateToProps = (state) => ({
