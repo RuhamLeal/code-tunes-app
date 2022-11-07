@@ -22,5 +22,6 @@ module.exports = {
     'default-param-last': 'off',
     'import/no-unresolved': 'off',
     'react/jsx-no-constructed-context-values': 'off',
+    'no-console': 'off',
   },
 };
