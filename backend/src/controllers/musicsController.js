@@ -3,7 +3,7 @@ import Music from '../models/Music.js';
 class MusicController {
   static showFavMusics = (req, res) => {
     const { userId } = req.body;
-    Music.find({ 'user': { '_id': userId } }, {}, (err, foundMusics) => {
+    Music.find({ 'userId': { '_id': userId } }, {}, (err, foundMusics) => {
       if (err) {
         res.status(500).json({ message: `${err.message} Nao foi encontrada nenhuma musica (Verifica o id passado)` });
       } else res.status(201).json(foundMusics);
