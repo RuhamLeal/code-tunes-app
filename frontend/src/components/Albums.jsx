@@ -28,9 +28,13 @@ function Albums({ albums, albumsQuant, artist }) {
 }
 
 Albums.propTypes = {
-  albums: PropTypes.arrayOf(shape()).isRequired,
+  albums: PropTypes.arrayOf(shape()),
   albumsQuant: PropTypes.number.isRequired,
   artist: PropTypes.string.isRequired,
+};
+
+Albums.defaultProps = {
+  albums: null,
 };
 
 const mapStateToProps = (state) => ({

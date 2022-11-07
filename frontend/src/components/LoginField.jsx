@@ -1,35 +1,37 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import loginValidate from '../helpers/loginValidate.js';
-import api from '../services/api.js';
-import { setLocalStorageUser } from '../helpers/localStorage.js';
+import logUser from '../redux/actions/logUser.js';
 
-function LoginField({ history }) {
+function LoginField({ history, dispatch, logMessage }) {
   const userNameRef = useRef(null);
   const passwordRef = useRef(null);
   const [form] = useAutoAnimate();
   const [emptyFields, setEmptyFields] = useState(false);
   const [NotFoundUser, setNotFoundUser] = useState(false);
 
+  useEffect(() => {
+    if (logMessage === 'Usuario logado') history.push('/search');
+    if (logMessage === 'Usuario não encontrado ou inexistente') {
+      setNotFoundUser(true);
+      setEmptyFields(false);
+    }
+  }, [logMessage]);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (loginValidate(userNameRef, passwordRef)) {
-      try {
-        const response = await api.post('/login', {
-          userName: userNameRef.current.value,
-          passWord: passwordRef.current.value,
-        });
-        setLocalStorageUser(userNameRef.current.value, response.data.userId);
-        history.push('/search');
-      } catch (err) {
-        if (err.response.data.message === 'Usuario não encontrado ou inexistente') {
-          setEmptyFields(false);
-          setNotFoundUser(true);
-        }
+      dispatch(logUser({
+        userName: userNameRef.current.value,
+        passWord: passwordRef.current.value,
+      }));
+      if (logMessage === 'Usuario não encontrado ou inexistente') {
+        setNotFoundUser(true);
+        setEmptyFields(false);
       }
     } else {
       setNotFoundUser(false);
@@ -56,10 +58,16 @@ function LoginField({ history }) {
   );
 }
 
+const mapStateToProps = (state) => ({
+  logMessage: state.loginReducer.logMessage,
+});
+
 LoginField.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  logMessage: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
-export default connect()(LoginField);
+export default connect(mapStateToProps)(LoginField);
