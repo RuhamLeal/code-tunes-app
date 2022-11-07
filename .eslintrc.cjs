@@ -23,5 +23,6 @@ module.exports = {
     'import/no-unresolved': 'off',
     'react/jsx-no-constructed-context-values': 'off',
     'no-console': 'off',
+    'quote-props': 'off',
   },
 };

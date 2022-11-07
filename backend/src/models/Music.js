@@ -12,6 +12,6 @@ const musicShema = new mongoose.Schema(
   },
 );
 
-const musics = mongoose.model('fav-musics', musicShema);
+const Music = mongoose.model('fav-musics', musicShema);
 
-export default musics;
+export default Music;
