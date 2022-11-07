@@ -17,8 +17,9 @@ class UserController {
     const { userName, passWord } = req.body;
 
     User.find({ 'userName': userName, 'passWord': passWord }, {}, (err, user) => {
-      if (err) res.status(404).json({ message: 'Usuario não encontrado ou inexistente' });
-      else res.status(200).json({ userId: user[0]['_id'] });
+      if (err) res.status(500).json({ message: err.message });
+      else if (user[0]) res.status(200).json({ userId: user[0]['_id'] });
+      else res.status(404).json({ message: 'Usuario não encontrado ou inexistente' });
     });
   };
 }
