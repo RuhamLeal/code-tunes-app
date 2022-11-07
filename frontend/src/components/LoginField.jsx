@@ -5,6 +5,7 @@ import { FloatingLabel, Form, Button } from 'react-bootstrap';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import loginValidate from '../helpers/loginValidate.js';
 import logUser from '../redux/actions/logUser.js';
+import cleanLogUser from '../redux/actions/cleanLogUser.js';
 
 function LoginField({ history, dispatch, logMessage }) {
   const userNameRef = useRef(null);
@@ -14,7 +15,10 @@ function LoginField({ history, dispatch, logMessage }) {
   const [NotFoundUser, setNotFoundUser] = useState(false);
 
   useEffect(() => {
-    if (logMessage === 'Usuario logado') history.push('/search');
+    if (logMessage === 'Usuario logado') {
+      dispatch(cleanLogUser());
+      history.push('/search');
+    }
     if (logMessage === 'Usuario não encontrado ou inexistente') {
       setNotFoundUser(true);
       setEmptyFields(false);
