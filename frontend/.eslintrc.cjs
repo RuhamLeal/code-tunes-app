@@ -24,5 +24,6 @@ module.exports = {
     'no-console': 'off',
     'quote-props': 'off',
     'dot-notation': 'off',
+    'react/jsx-no-constructed-context-values': 'off',
   },
 };

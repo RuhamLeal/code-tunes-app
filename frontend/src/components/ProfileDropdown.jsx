@@ -3,9 +3,10 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { IconContext } from 'react-icons';
 import { BsPersonCircle } from 'react-icons/bs';
+import { getLocalStorageUsername } from '../helpers/localStorage.js';
 
 function ProfileDropdown() {
-  const [userName] = useState(localStorage.getItem('username'));
+  const [userName] = useState(getLocalStorageUsername());
 
   return (
     <section>

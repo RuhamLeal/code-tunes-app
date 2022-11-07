@@ -5,4 +5,6 @@ export const setLocalStorageUser = (username, userId) => {
   }));
 };
 
-export const x = 4;
+export const getLocalStorageUsername = () => JSON.parse(localStorage.getItem('user')).username;
+
+export const getLocalStorageUserId = () => JSON.parse(localStorage.getItem('user')).userId;
