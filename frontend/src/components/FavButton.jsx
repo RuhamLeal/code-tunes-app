@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes, { shape } from 'prop-types';
 import { BsHeart, BsHeartFill } from 'react-icons/bs';
 import { connect } from 'react-redux';
 import addFavMusic from '../redux/actions/addFavMusic';
 import deleteFavMusic from '../redux/actions/deleteFavMusic';
 
-function FavButton({ trackId, musics, dispatch }) {
+function FavButton({
+  trackId, musics, dispatch, favMusics,
+}) {
   const [isFavorite, setFavorite] = useState(false);
+
+  useEffect(() => {
+    if (favMusics && favMusics.length > 0) {
+      favMusics.forEach((music) => {
+        if (music.trackId === trackId) setFavorite(true);
+      });
+    }
+  }, [favMusics]);
 
   const handleFavorite = () => {
     if (musics) {
@@ -25,12 +35,18 @@ function FavButton({ trackId, musics, dispatch }) {
 
 const mapStateToProps = (state) => ({
   musics: state.albumReducer.musics,
+  favMusics: state.albumReducer.favMusics,
 });
 
 FavButton.propTypes = {
   trackId: PropTypes.number.isRequired,
   musics: PropTypes.arrayOf(shape()).isRequired,
   dispatch: PropTypes.func.isRequired,
+  favMusics: PropTypes.arrayOf(shape()),
+};
+
+FavButton.defaultProps = {
+  favMusics: null,
 };
 
 export default connect(mapStateToProps)(FavButton);

@@ -1,13 +1,14 @@
 import { getLocalStorageUserId } from '../../helpers/localStorage.js';
 import api from '../../services/api.js';
 
-export default function addFavMusic({ previewUrl, trackName }) {
+export default function addFavMusic({ previewUrl, trackName, trackId }) {
   const userId = getLocalStorageUserId();
 
   return async () => {
     try {
       await api.post('/fav-musics', {
         userId,
+        trackId,
         audioUrl: previewUrl,
         musicName: trackName,
       });

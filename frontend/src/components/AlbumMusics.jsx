@@ -6,12 +6,14 @@ import Card from 'react-bootstrap/Card';
 import getAlbumMusics from '../redux/actions/getAlbumMusics';
 import Loading from './Loading.jsx';
 import MusicCard from './MusicCard.jsx';
+import getFavMusics from '../redux/actions/getFavMusics';
 
 function AlbumMusics({ dispatch, album, musics }) {
   const { albumId } = useParams();
 
   useEffect(() => {
     dispatch(getAlbumMusics(Number(albumId)));
+    dispatch(getFavMusics());
   }, []);
 
   if (!album || !musics) return <Loading />;
