@@ -1,15 +1,22 @@
 import { getLocalStorageUserId } from '../../helpers/localStorage.js';
 import api from '../../services/api.js';
+import { DELETE_MUSIC } from './types.js';
 
 export default function deleteFavMusic({ trackId }) {
   const userId = getLocalStorageUserId();
 
-  return async () => {
+  return async (dispatch) => {
     try {
       await api.delete('/fav-musics', {
         data: {
           userId,
           trackId,
+        },
+      });
+      dispatch({
+        type: DELETE_MUSIC,
+        payload: {
+          deletedMusicId: trackId,
         },
       });
     } catch (err) {

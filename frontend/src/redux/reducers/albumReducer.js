@@ -1,9 +1,10 @@
-import { GET_ALBUM_MUSICS, GET_FAV_MUSICS } from '../actions/types.js';
+import { DELETE_MUSIC, GET_ALBUM_MUSICS, GET_FAV_MUSICS } from '../actions/types.js';
 
 const INITIAL_STATE = {
   album: null,
   musics: null,
   favMusics: null,
+  deletedMusic: null,
 };
 
 function albumReducer(state = INITIAL_STATE, action) {
@@ -16,6 +17,10 @@ function albumReducer(state = INITIAL_STATE, action) {
     case GET_FAV_MUSICS: return {
       ...state,
       favMusics: action.payload.favMusics,
+    };
+    case DELETE_MUSIC: return {
+      ...state,
+      deletedMusic: action.payload.deletedMusicId,
     };
     default: return state;
   }
