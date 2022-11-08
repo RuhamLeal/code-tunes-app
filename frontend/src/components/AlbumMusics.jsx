@@ -33,6 +33,7 @@ function AlbumMusics({ dispatch, album, musics }) {
         { musics.map((music) => (
           <MusicCard
             key={music.trackId}
+            trackId={music.trackId}
             audioUrl={music.previewUrl}
             musicName={music.trackName}
           />

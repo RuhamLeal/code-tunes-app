@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import FavButton from './FavButton.jsx';
 
-function MusicCard({ audioUrl, musicName }) {
+function MusicCard({ audioUrl, musicName, trackId }) {
   return (
     <section>
       <h3>{ musicName }</h3>
@@ -13,7 +13,7 @@ function MusicCard({ audioUrl, musicName }) {
         {' '}
         <code>audio</code>
       </audio>
-      <FavButton />
+      <FavButton trackId={trackId} />
     </section>
   );
 }
@@ -21,6 +21,7 @@ function MusicCard({ audioUrl, musicName }) {
 MusicCard.propTypes = {
   audioUrl: PropTypes.string.isRequired,
   musicName: PropTypes.string.isRequired,
+  trackId: PropTypes.number.isRequired,
 };
 
 export default MusicCard;
