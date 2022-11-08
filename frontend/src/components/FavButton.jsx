@@ -3,16 +3,17 @@ import PropTypes, { shape } from 'prop-types';
 import { BsHeart, BsHeartFill } from 'react-icons/bs';
 import { connect } from 'react-redux';
 import addFavMusic from '../redux/actions/addFavMusic';
+import deleteFavMusic from '../redux/actions/deleteFavMusic';
 
 function FavButton({ trackId, musics, dispatch }) {
   const [isFavorite, setFavorite] = useState(false);
 
   const handleFavorite = () => {
     if (musics) {
+      const track = musics.find((music) => music.trackId === trackId);
       if (!isFavorite) {
-        const track = musics.find((music) => music.trackId === trackId);
         dispatch(addFavMusic(track));
-      }
+      } else dispatch(deleteFavMusic(track));
     }
     setFavorite(!isFavorite);
   };
