@@ -26,9 +26,9 @@ class MusicController {
   };
 
   static deleteFavMusic = (req, res) => {
-    const { musicId } = req.params;
+    const { audioUrl, userId } = req.body;
 
-    Music.findByIdAndDelete(musicId, (err) => {
+    Music.findOneAndDelete({ 'audioUrl': audioUrl, 'userId': userId }, {}, (err) => {
       if (err) res.status(500).json({ message: `${err.message} - Musica não encontrada ou inexistente` });
       else res.status(200).json({ message: 'Musica removida com sucesso' });
     });
