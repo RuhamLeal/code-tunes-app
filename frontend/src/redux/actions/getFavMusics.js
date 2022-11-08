@@ -8,7 +8,6 @@ export default function getFavMusics() {
   return async (dispatch) => {
     try {
       const response = await api.get(`/fav-musics/${userId}`);
-      console.log(response);
       dispatch({
         type: GET_FAV_MUSICS,
         payload: {
