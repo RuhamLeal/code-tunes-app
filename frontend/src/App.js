@@ -7,11 +7,13 @@ import Profile from './pages/Profile.jsx';
 import Search from './pages/Search.jsx';
 import EditProfile from './pages/EditProfile.jsx';
 import NotFound from './pages/NotFound.jsx';
+import Register from './pages/Register.jsx';
 
 function App() {
   return (
     <Switch>
       <Route exact path="/" component={Login} />
+      <Route exact path="/register" component={Register} />
       <Route exact path="/album/:albumId" component={Album} />
       <Route exact path="/favorites" component={Favorites} />
       <Route exact path="/profile" component={Profile} />
