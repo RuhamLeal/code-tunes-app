@@ -57,7 +57,7 @@ function RegisterField() {
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check ref={policyRef} type="checkbox" label="I agree with the Code Tunes policy" />
       </Form.Group>
-      { validationMessage.length > 0 ? <h4>{validationMessage}</h4> : null}
+      { validationMessage.length > 0 ? <h5>{validationMessage}</h5> : null}
       <Button variant="primary" type="submit">
         Submit
       </Button>

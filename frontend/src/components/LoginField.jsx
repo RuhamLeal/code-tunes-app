@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
@@ -57,6 +58,12 @@ function LoginField({ history, dispatch, logMessage }) {
       </FloatingLabel>
       { emptyFields ? <h6> ! Preencha todos os campos</h6> : null }
       { NotFoundUser ? <h6> ! Login ou senha incorretos</h6> : null }
+      <section>
+        <h6>don&apos;t have an account?</h6>
+        <Link to="/register">
+          <h6>Sign up now</h6>
+        </Link>
+      </section>
       <Button type="Submit" variant="primary">Entrar</Button>
     </form>
   );
