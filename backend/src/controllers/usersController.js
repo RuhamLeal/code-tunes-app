@@ -1,17 +1,39 @@
+/* eslint-disable max-len */
 import User from '../models/User.js';
 
 class UserController {
   static registerUser = (req, res) => {
+    const { userName, email } = req.body;
     const newUser = new User(req.body);
 
-    newUser.save((err) => {
-      if (err) {
-        res.status(400).json(
-          { message: `${err.message} Usuario nao cadastrado, verifica se os dados foram inseridos corretamente` },
-        );
-      } else res.status(200).json({ message: 'Usuario cadastrado com sucesso' });
+    User.findOne({ 'userName': userName }, {}, (err, user) => {
+      if (err) res.status(500).json({ message: err.message });
+      else if (user) res.status(400).json({ message: 'Username já cadastrado' });
+      else {
+        User.findOne({ 'email': email }, {}, (error, sameUser) => {
+          if (error) res.status(500).json({ message: error.message });
+          else if (sameUser) res.status(400).json({ message: 'Email já cadastrado' });
+          else {
+            newUser.save((otherError) => {
+              if (otherError) {
+                res.status(400).json(
+                  { message: `${otherError.message} Usuario nao cadastrado, verifica se os dados foram inseridos corretamente` },
+                );
+              } else res.status(200).json({ message: 'Usuario cadastrado com sucesso' });
+            });
+          }
+        });
+      }
     });
   };
+
+  /*         newUser.save((error) => {
+          if (error) {
+            res.status(400).json(
+              { message: `${error.message} Usuario nao cadastrado, verifica se os dados foram inseridos corretamente` },
+            );
+          } else res.status(200).json({ message: 'Usuario cadastrado com sucesso' });
+        }); */
 
   static logUser = (req, res) => {
     const { userName, passWord } = req.body;
