@@ -4,3 +4,5 @@ export const LOG_USER = 'LOG_USER';
 export const CLEAN_LOG_USER = 'CLEAN_LOG_USER';
 export const GET_FAV_MUSICS = 'GET_FAV_MUSICS';
 export const DELETE_MUSIC = 'DELETE_MUSIC';
+export const REGISTER_USER = 'REGISTER_USER';
+export const CLEAN_REGISTERED_USER = 'CLEAN_REGISTERED_USER';

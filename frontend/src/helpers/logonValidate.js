@@ -32,18 +32,16 @@ const validatePolicy = (checked) => {
 
 const validateRegistration = (
   {
-    username, name, email, password, confirmPassword, policy,
+    userName, name, email, passWord, confirmPassword, policy,
   },
 ) => {
   const validations = [
-    validateUsername(username),
+    validateUsername(userName),
     validateName(name),
     validateEmail(email),
-    validatePassword(password, confirmPassword),
+    validatePassword(passWord, confirmPassword),
     validatePolicy(policy),
   ];
-
-  console.log(validations);
 
   for (let idx = 0; idx < validations.length; idx += 1) {
     if (validations[idx] !== 'validated') return validations[idx];

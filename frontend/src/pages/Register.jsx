@@ -1,18 +1,20 @@
-/* import PropTypes from 'prop-types'; */
+import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import RegisterField from '../components/RegisterField';
 
-function Register() {
+function Register({ history }) {
   return (
     <section>
-      <RegisterField />
+      <RegisterField history={history} />
     </section>
   );
 }
 
-Register.propTypes = {};
+Register.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
-const mapStateToProps = () => ({});
-
-export default connect(mapStateToProps)(Register);
+export default connect()(Register);

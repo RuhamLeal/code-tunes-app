@@ -59,7 +59,7 @@ function LoginField({ history, dispatch, logMessage }) {
       { emptyFields ? <h6> ! Preencha todos os campos</h6> : null }
       { NotFoundUser ? <h6> ! Login ou senha incorretos</h6> : null }
       <section>
-        <h6>don&apos;t have an account?</h6>
+        <h6>Don&apos;t have an account?</h6>
         <Link to="/register">
           <h6>Sign up now</h6>
         </Link>
