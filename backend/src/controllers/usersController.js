@@ -7,17 +7,17 @@ class UserController {
     const newUser = new User(req.body);
 
     User.findOne({ 'userName': userName }, {}, (err, user) => {
-      if (err) res.status(500).json({ message: err.message });
+      if (err) res.status(500).json({ errorMessage: err.message });
       else if (user) res.status(400).json({ message: 'Username já cadastrado' });
       else {
         User.findOne({ 'email': email }, {}, (error, sameUser) => {
-          if (error) res.status(500).json({ message: error.message });
+          if (error) res.status(500).json({ errorMessage: error.message });
           else if (sameUser) res.status(400).json({ message: 'Email já cadastrado' });
           else {
             newUser.save((otherError) => {
               if (otherError) {
-                res.status(400).json(
-                  { message: `${otherError.message} Usuario nao cadastrado, verifica se os dados foram inseridos corretamente` },
+                res.status(500).json(
+                  { errorMessage: `${otherError.message} Usuario nao cadastrado, verifica se os dados foram inseridos corretamente` },
                 );
               } else res.status(200).json({ message: 'Usuario cadastrado com sucesso' });
             });
