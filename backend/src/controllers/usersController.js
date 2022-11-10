@@ -31,7 +31,13 @@ class UserController {
     const { userId } = req.params;
     User.findOne({ '_id': userId }, {}, (err, user) => {
       if (err) res.status(500).json({ message: err.message });
-      else res.status(201).json(user);
+      else {
+        res.status(201).json({
+          userName: user.userName,
+          name: user.name,
+          email: user.email,
+        });
+      }
     });
   };
 
