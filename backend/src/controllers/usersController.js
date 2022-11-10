@@ -27,13 +27,13 @@ class UserController {
     });
   };
 
-  /*         newUser.save((error) => {
-          if (error) {
-            res.status(400).json(
-              { message: `${error.message} Usuario nao cadastrado, verifica se os dados foram inseridos corretamente` },
-            );
-          } else res.status(200).json({ message: 'Usuario cadastrado com sucesso' });
-        }); */
+  static getUser = (req, res) => {
+    const { userId } = req.params;
+    User.findOne({ '_id': userId }, {}, (err, user) => {
+      if (err) res.status(500).json({ message: err.message });
+      else res.status(201).json(user);
+    });
+  };
 
   static logUser = (req, res) => {
     const { userName, passWord } = req.body;
