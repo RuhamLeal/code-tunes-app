@@ -2,7 +2,7 @@ import api from '../../services/api.js';
 import { REGISTER_USER } from './types.js';
 
 export default function registerUser({
-  userName, email, name, passWord,
+  userName, email, name, passWord, img,
 }) {
   return async (dispatch) => {
     try {
@@ -11,6 +11,7 @@ export default function registerUser({
         name,
         passWord,
         email,
+        img,
       });
       dispatch({
         type: REGISTER_USER,

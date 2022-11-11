@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
+import defaultProfileIcon from '../images/default-profile-icon.png';
 import validateRegistration from '../helpers/logonValidate.js';
 import registerUser from '../redux/actions/registerUser.js';
 
@@ -32,6 +33,7 @@ function RegisterField({ history, dispatch, registerMessage }) {
       email: emailRef.current.value,
       passWord: passwordRef.current.value,
       confirmPassword: confirmPasswordRef.current.value,
+      img: defaultProfileIcon,
       policy: policyRef.current.checked,
     };
 
