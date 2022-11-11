@@ -5,6 +5,16 @@ export const setLocalStorageUser = (username, userId) => {
   }));
 };
 
-export const getLocalStorageUsername = () => JSON.parse(localStorage.getItem('user')).username;
+export const getLocalStorageUsername = () => {
+  if (localStorage.getItem('user')) {
+    return JSON.parse(localStorage.getItem('user')).username;
+  } return '';
+};
 
-export const getLocalStorageUserId = () => JSON.parse(localStorage.getItem('user')).userId;
+export const getLocalStorageUserId = () => {
+  if (localStorage.getItem('user')) {
+    return JSON.parse(localStorage.getItem('user')).userId;
+  } return '';
+};
+
+export const cleanUserLocalStorage = () => localStorage.removeItem('user');
