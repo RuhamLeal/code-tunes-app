@@ -36,6 +36,7 @@ class UserController {
           userName: user.userName,
           name: user.name,
           email: user.email,
+          img: user.img,
         });
       }
     });
