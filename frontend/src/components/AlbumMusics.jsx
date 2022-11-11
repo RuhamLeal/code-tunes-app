@@ -36,6 +36,9 @@ function AlbumMusics({ dispatch, album, musics }) {
           <MusicCard
             key={music.trackId}
             trackId={music.trackId}
+            albumId={music.collectionId}
+            albumName={music.collectionName}
+            artistName={music.artistName}
             audioUrl={music.previewUrl}
             musicName={music.trackName}
           />

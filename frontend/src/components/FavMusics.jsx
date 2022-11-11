@@ -30,6 +30,9 @@ function FavMusics({ dispatch, favMusics, deletedMusic }) {
           trackId={music.trackId}
           musicName={music.musicName}
           audioUrl={music.audioUrl}
+          artistName={music.artistName}
+          albumName={music.albumName}
+          albumId={music.albumId}
         />
       )) }
     </section>
