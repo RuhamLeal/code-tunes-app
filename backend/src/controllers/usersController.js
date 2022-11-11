@@ -27,6 +27,15 @@ class UserController {
     });
   };
 
+  static updateUser = (req, res) => {
+    const { userId } = req.params;
+
+    User.findByIdAndUpdate(userId, req.body, (err) => {
+      if (err) res.status(500).json({ message: err.message });
+      else res.status(200).json({ message: 'Usuario atualizado com sucesso' });
+    });
+  };
+
   static getUser = (req, res) => {
     const { userId } = req.params;
     User.findOne({ '_id': userId }, {}, (err, user) => {

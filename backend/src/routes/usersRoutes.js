@@ -5,6 +5,7 @@ const userRouter = express.Router();
 
 userRouter
   .get('/user/:userId', UserController.getUser)
+  .put('/user/:userId', UserController.updateUser)
   .post('/register', UserController.registerUser)
   .post('/login', UserController.logUser);
 
