@@ -13,7 +13,7 @@ function ProfileData({ history, dispatch, userData }) {
   return (
     <main>
       <section>
-        { userData ? <img src={userData.img} alt="Profile-img" /> : null }
+        { userData ? <img src={userData.img} alt="Profile-img" width={300} /> : null }
         <div>
           <h4>Username: </h4>
           { userData ? <h6>{userData.userName}</h6> : null }

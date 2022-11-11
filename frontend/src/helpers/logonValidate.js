@@ -18,6 +18,11 @@ const validateEmail = (email) => {
   return 'validated';
 };
 
+const validateVerifyingPassword = (password) => {
+  if (!password || password.length === 0) return 'Preencha todos os campos';
+  return 'validated';
+};
+
 const validatePassword = (password, confirmPassword) => {
   if (password.length === 0 || confirmPassword.length === 0) return 'Preencha todos os campos';
   if (password !== confirmPassword) return 'As senhas inseridas são diferentes';
@@ -30,7 +35,7 @@ const validatePolicy = (checked) => {
   return 'validated';
 };
 
-const validateRegistration = (
+export const validateRegistration = (
   {
     userName, name, email, passWord, confirmPassword, policy,
   },
@@ -50,4 +55,21 @@ const validateRegistration = (
   return 'validated';
 };
 
-export default validateRegistration;
+export const validateProfileEditing = (
+  {
+    userName, name, email, passWord,
+  },
+) => {
+  const validations = [
+    validateUsername(userName),
+    validateName(name),
+    validateEmail(email),
+    validateVerifyingPassword(passWord),
+  ];
+
+  for (let idx = 0; idx < validations.length; idx += 1) {
+    if (validations[idx] !== 'validated') return validations[idx];
+  }
+
+  return 'validated';
+};
