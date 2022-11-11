@@ -44,11 +44,57 @@ class UserController {
       img,
     };
 
-    User.findByIdAndUpdate(userId, updatedUser, (err, user) => {
-      if (err) res.status(500).json({ message: err.message });
-      else if (user.passWord !== passWord) {
-        res.status(400).json({ message: 'Senha inválida' });
-      } else res.status(200).json({ message: 'Usuario atualizado com sucesso' });
+    User.findById(userId, (firstErr, userCalled) => {
+      if (firstErr) res.status(500).json({ errorMessage: firstErr.message });
+      else if (userCalled.userName === userName) {
+        if (userCalled.email === email) {
+          User.findByIdAndUpdate(userId, updatedUser, (secondErr, userToUpdate1) => {
+            if (secondErr) res.status(500).json({ errorMessage: secondErr.message });
+            else if (userToUpdate1.passWord !== passWord) {
+              res.status(400).json({ message: 'Senha inválida' });
+            } else res.status(200).json({ message: 'Usuario atualizado com sucesso' });
+          });
+        } else {
+          User.findOne({ 'email': email }, {}, (thirdErr, user1) => {
+            if (thirdErr) res.status(500).json({ errorMessage: thirdErr.message });
+            else if (user1) res.status(400).json({ message: 'Email já cadastrado' });
+            else {
+              User.findByIdAndUpdate(userId, updatedUser, (fourthErr, userToUpdate2) => {
+                if (fourthErr) res.status(500).json({ errorMessage: fourthErr.message });
+                else if (userToUpdate2.passWord !== passWord) {
+                  res.status(400).json({ message: 'Senha inválida' });
+                } else res.status(200).json({ message: 'Usuario atualizado com sucesso' });
+              });
+            }
+          });
+        }
+      } else {
+        User.findOne({ 'userName': userName }, {}, (fifthErr, user2) => {
+          if (fifthErr) res.status(500).json({ errorMessage: fifthErr.message });
+          else if (user2) res.status(400).json({ message: 'Username já cadastrado' });
+          else if (userCalled.email === email) {
+            User.findByIdAndUpdate(userId, updatedUser, (sixthErr, userToUpdate3) => {
+              if (sixthErr) res.status(500).json({ errorMessage: sixthErr.message });
+              else if (userToUpdate3.passWord !== passWord) {
+                res.status(400).json({ message: 'Senha inválida' });
+              } else res.status(200).json({ message: 'Usuario atualizado com sucesso' });
+            });
+          } else {
+            User.findOne({ 'email': email }, {}, (seventhErr, user3) => {
+              if (seventhErr) res.status(500).json({ errorMessage: seventhErr.message });
+              else if (user3) res.status(400).json({ message: 'Email já cadastrado' });
+              else {
+                User.findByIdAndUpdate(userId, updatedUser, (eighthErr, userToUpdate4) => {
+                  if (eighthErr) res.status(500).json({ errorMessage: eighthErr.message });
+                  else if (userToUpdate4.passWord !== passWord) {
+                    res.status(400).json({ message: 'Senha inválida' });
+                  } else res.status(200).json({ message: 'Usuario atualizado com sucesso' });
+                });
+              }
+            });
+          }
+        });
+      }
     });
   };
 
