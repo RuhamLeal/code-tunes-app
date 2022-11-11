@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { FiEdit } from 'react-icons/fi';
 import { connect } from 'react-redux';
+import getUser from '../redux/actions/getUser';
 
 function ProfileData({ history, dispatch, userData }) {
   useEffect(() => {
@@ -12,9 +13,18 @@ function ProfileData({ history, dispatch, userData }) {
   return (
     <main>
       <section>
-        { userData ? <h6>{userData.userName}</h6> : null }
-        { userData ? <h6>{userData.name}</h6> : null }
-        { userData ? <h6>{userData.passWord}</h6> : null }
+        <div>
+          <h4>Username: </h4>
+          { userData ? <h6>{userData.userName}</h6> : null }
+        </div>
+        <div>
+          <h4>Name: </h4>
+          { userData ? <h6>{userData.name}</h6> : null }
+        </div>
+        <div>
+          <h4>Email: </h4>
+          { userData ? <h6>{userData.email}</h6> : null }
+        </div>
       </section>
       <section>
         <Button onClick={() => history.push('/profile/edit')} variant="Secondary" type="button">
