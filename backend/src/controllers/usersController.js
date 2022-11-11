@@ -46,6 +46,7 @@ class UserController {
 
     User.findById(userId, (firstErr, userCalled) => {
       if (firstErr) res.status(500).json({ errorMessage: firstErr.message });
+      else if (!userCalled) res.status(400).json({ message: 'Usuario não encontrado, verifica o ID passado' });
       else if (userCalled.userName === userName) {
         if (userCalled.email === email) {
           User.findByIdAndUpdate(userId, updatedUser, (secondErr, userToUpdate1) => {
