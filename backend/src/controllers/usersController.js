@@ -29,10 +29,26 @@ class UserController {
 
   static updateUser = (req, res) => {
     const { userId } = req.params;
+    const {
+      userName,
+      name,
+      email,
+      img,
+      passWord,
+    } = req.body;
 
-    User.findByIdAndUpdate(userId, req.body, (err) => {
+    const updatedUser = {
+      userName,
+      name,
+      email,
+      img,
+    };
+
+    User.findByIdAndUpdate(userId, updatedUser, (err, user) => {
       if (err) res.status(500).json({ message: err.message });
-      else res.status(200).json({ message: 'Usuario atualizado com sucesso' });
+      else if (user.passWord !== passWord) {
+        res.status(400).json({ message: 'Senha inválida' });
+      } else res.status(200).json({ message: 'Usuario atualizado com sucesso' });
     });
   };
 
