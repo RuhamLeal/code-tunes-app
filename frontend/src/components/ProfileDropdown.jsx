@@ -9,8 +9,8 @@ function ProfileDropdown() {
   const [userName] = useState(getLocalStorageUsername());
 
   return (
-    <section>
-      <IconContext.Provider value={{ className: 'profile-header-icon' }}>
+    <section className="header-dropdown">
+      <IconContext.Provider value={{ className: 'header-dropdown-icon', size: 35 }}>
         <BsPersonCircle />
       </IconContext.Provider>
       <DropdownButton
