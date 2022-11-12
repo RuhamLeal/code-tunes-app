@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
+import { FaExclamationCircle } from 'react-icons/fa';
+import codetuneslogo from '../images/codetuneslogo.png';
 import loginValidate from '../helpers/loginValidate.js';
 import logUser from '../redux/actions/logUser.js';
 import cleanLogUser from '../redux/actions/cleanLogUser.js';
@@ -11,7 +13,7 @@ import cleanLogUser from '../redux/actions/cleanLogUser.js';
 function LoginField({ history, dispatch, logMessage }) {
   const userNameRef = useRef(null);
   const passwordRef = useRef(null);
-  const [form] = useAutoAnimate();
+  const [fieldsContainer] = useAutoAnimate();
   const [emptyFields, setEmptyFields] = useState(false);
   const [NotFoundUser, setNotFoundUser] = useState(false);
 
@@ -45,26 +47,41 @@ function LoginField({ history, dispatch, logMessage }) {
   };
 
   return (
-    <form ref={form} onSubmit={handleSubmit}>
-      <FloatingLabel
-        controlId="floatingInput"
-        label="Username"
-        className="mb-3"
-      >
-        <Form.Control ref={userNameRef} type="text" placeholder="Username" />
-      </FloatingLabel>
-      <FloatingLabel controlId="floatingPassword" label="Password">
-        <Form.Control ref={passwordRef} type="password" placeholder="Password" />
-      </FloatingLabel>
-      { emptyFields ? <h6> ! Preencha todos os campos</h6> : null }
-      { NotFoundUser ? <h6> ! Login ou senha incorretos</h6> : null }
-      <section>
+    <form className="login-form-container" onSubmit={handleSubmit}>
+      <section className="login-fields-container" ref={fieldsContainer}>
+        <img src={codetuneslogo} alt="code-tune-logo" width={150} />
+        <section className="login-input-container">
+          <FloatingLabel
+            controlId="floatingInput"
+            label="Username"
+            className="mb-3"
+          >
+            <Form.Control ref={userNameRef} type="text" placeholder="Username" />
+          </FloatingLabel>
+          <FloatingLabel controlId="floatingPassword" label="Password">
+            <Form.Control ref={passwordRef} type="password" placeholder="Password" />
+          </FloatingLabel>
+        </section>
+        { emptyFields ? (
+          <div className="login-message-container">
+            <FaExclamationCircle />
+            <h6> Preencha todos os campos</h6>
+          </div>
+        ) : null }
+        { NotFoundUser ? (
+          <div className="login-message-container">
+            <FaExclamationCircle />
+            <h6> Login ou senha incorretos</h6>
+          </div>
+        ) : null }
+        <Button className="login-button" type="Submit" variant="success">Log in</Button>
+      </section>
+      <section className="linkToRegisterPage-container">
         <h6>Don&apos;t have an account?</h6>
         <Link to="/register">
           <h6>Sign up now</h6>
         </Link>
       </section>
-      <Button type="Submit" variant="primary">Entrar</Button>
     </form>
   );
 }
