@@ -6,7 +6,7 @@ import '../styles/Register.css';
 
 function Register({ history }) {
   return (
-    <section>
+    <section className="register-page">
       <RegisterField history={history} />
     </section>
   );
