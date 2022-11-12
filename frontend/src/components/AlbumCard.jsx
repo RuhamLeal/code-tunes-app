@@ -9,10 +9,10 @@ function AlbumCard({
   const qualityImg = img.replace(/100x100/gi, () => '500x500');
 
   return (
-    <Link to={`/album/${id}`}>
-      <Card border="success" style={{ width: '300px' }}>
+    <Link to={`/album/${id}`} className="album-card">
+      <Card className="album-card-body" border="success" style={{ width: '300px' }}>
         <Card.Img variant="top" src={qualityImg} />
-        <Card.Body>
+        <Card.Body className="search-card-body">
           <Card.Title>{albumName}</Card.Title>
           <Card.Text>
             {`${artistName} - ${albumGenre}`}

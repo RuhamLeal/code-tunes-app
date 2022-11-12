@@ -40,14 +40,14 @@
   align-items: center;
   justify-content: center;
   margin-right: 45px;
-  margin-left: 70px;
+  margin-left: 30px;
 }
 
 .header-dropdown-icon {
   color: white;
   position: relative;
   z-index: 1;
-  left: 110px;
+  left: 70px;
 }
 
 #dropdown-basic-button {
@@ -56,5 +56,5 @@
   justify-content: end;
   border-radius: 20px;
   height: 45px;
-  width: 160px;
+  min-width: 180px;
 }

@@ -11,7 +11,7 @@ function Search() {
     <section className="search-page">
       <Header />
       <SearchField />
-      <main ref={albumSection}>
+      <main className="albuns-main" ref={albumSection}>
         <Albums />
       </main>
     </section>

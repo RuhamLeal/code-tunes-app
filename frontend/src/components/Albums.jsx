@@ -7,22 +7,26 @@ function Albums({ albums, albumsQuant, artist }) {
   if (!albums) return null;
   if (albums.length === 0) {
     return (
-      <h2>{`Nenhum album de ${artist} encontrado`}</h2>
+      <h2 className="result-message">{`Nenhum album de ${artist} encontrado`}</h2>
     );
   }
   return (
-    <section>
-      <h2>{`Foram encontrados ${albumsQuant} albums de ${artist}:`}</h2>
-      { albums.map((album) => (
-        <AlbumCard
-          key={album.collectionId}
-          id={album.collectionId}
-          img={album.artworkUrl100}
-          albumName={album.collectionName}
-          artistName={album.artistName}
-          albumGenre={album.primaryGenreName}
-        />
-      )) }
+    <section className="albun-main-field">
+      <div className="result-title-container">
+        <h2 className="result-message">{`Foram encontrados ${albumsQuant} albums de ${artist}:`}</h2>
+      </div>
+      <section className="albuns-container">
+        { albums.map((album) => (
+          <AlbumCard
+            key={album.collectionId}
+            id={album.collectionId}
+            img={album.artworkUrl100}
+            albumName={album.collectionName}
+            artistName={album.artistName}
+            albumGenre={album.primaryGenreName}
+          />
+        )) }
+      </section>
     </section>
   );
 }
