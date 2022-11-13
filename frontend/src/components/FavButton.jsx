@@ -38,7 +38,7 @@ function FavButton({
 
   if (isFavorite) {
     return (
-      <IconContext.Provider value={{ className: 'fav-music-button', size: 25, color: 'red' }}>
+      <IconContext.Provider value={{ className: 'fav-music-button', size: 25, color: 'B23535' }}>
         <BsHeartFill onClick={handleFavorite} />
       </IconContext.Provider>
     );

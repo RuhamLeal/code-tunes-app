@@ -30,7 +30,7 @@ function FavMusics({ dispatch, favMusics, deletedMusic }) {
   if (!favMusics) return <Loading />;
   if (favMusics.length === 0) {
     return (
-      <h2>
+      <h2 className="empty-fav-music-title">
         Nenhuma musica curtida ainda,
         pesquise por artistas e albums,
         curta e volta aqui para ver suas
@@ -40,8 +40,8 @@ function FavMusics({ dispatch, favMusics, deletedMusic }) {
   }
 
   return (
-    <section>
-      <div>
+    <section className="favorites-musics-main-container">
+      <div className="input-search-container">
         <FloatingLabel
           controlId="floatingInput"
           label="Search for a music..."
@@ -50,17 +50,19 @@ function FavMusics({ dispatch, favMusics, deletedMusic }) {
           <Form.Control onChange={handleChange} type="text" placeholder="Search" />
         </FloatingLabel>
       </div>
-      { filterFavMusics.map((music) => (
-        <MusicCard
-          key={music.trackId}
-          trackId={music.trackId}
-          musicName={music.musicName}
-          audioUrl={music.audioUrl}
-          artistName={music.artistName}
-          albumName={music.albumName}
-          albumId={music.albumId}
-        />
-      )) }
+      <section className="fav-musics-container">
+        { filterFavMusics.map((music) => (
+          <MusicCard
+            key={music.trackId}
+            trackId={music.trackId}
+            musicName={music.musicName}
+            audioUrl={music.audioUrl}
+            artistName={music.artistName}
+            albumName={music.albumName}
+            albumId={music.albumId}
+          />
+        )) }
+      </section>
     </section>
   );
 }

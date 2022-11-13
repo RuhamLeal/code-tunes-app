@@ -1,0 +1,51 @@
+.favorites-page {
+  width: 100%;
+  height: 100%;
+}
+
+.favorites-main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(241, 252, 241);
+}
+
+.favorites-musics-main-container {
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.fav-musics-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+}
+
+.album-music-card {
+  background-color: rgb(241, 252, 241);
+}
+
+.input-search-container {
+  margin: 50px 0 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+}
+
+.empty-fav-music-title {
+  border-radius: 20px;
+  color: aliceblue;
+  text-align: center;
+  background-color: rgb(31, 44, 35);
+  font-weight: 500;
+  padding: 60px;
+  margin-top: 100px;
+  width: 60%;
+}
