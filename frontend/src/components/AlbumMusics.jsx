@@ -21,8 +21,8 @@ function AlbumMusics({ dispatch, album, musics }) {
   const qualityImg = album.artworkUrl100.replace(/100x100/gi, () => '500x500');
 
   return (
-    <section>
-      <Card border="success" style={{ width: '400px' }}>
+    <section className="album-musics-container">
+      <Card className="album-page-card" border="success" style={{ width: '420px' }}>
         <Card.Img variant="top" src={qualityImg} />
         <Card.Body>
           <Card.Title>{album.collectionName}</Card.Title>
@@ -31,7 +31,7 @@ function AlbumMusics({ dispatch, album, musics }) {
           </Card.Text>
         </Card.Body>
       </Card>
-      <section>
+      <section className="musics-container">
         { musics.map((music) => (
           <MusicCard
             key={music.trackId}

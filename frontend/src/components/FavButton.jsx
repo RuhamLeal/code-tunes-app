@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes, { shape } from 'prop-types';
 import { BsHeart, BsHeartFill } from 'react-icons/bs';
 import { connect } from 'react-redux';
+import { IconContext } from 'react-icons';
 import { useLocation } from 'react-router-dom';
 import addFavMusic from '../redux/actions/addFavMusic';
 import deleteFavMusic from '../redux/actions/deleteFavMusic';
@@ -35,9 +36,19 @@ function FavButton({
     setFavorite(!isFavorite);
   };
 
-  if (isFavorite) return <BsHeartFill onClick={handleFavorite} />;
+  if (isFavorite) {
+    return (
+      <IconContext.Provider value={{ className: 'fav-music-button', size: 25, color: 'red' }}>
+        <BsHeartFill onClick={handleFavorite} />
+      </IconContext.Provider>
+    );
+  }
 
-  return <BsHeart onClick={handleFavorite} />;
+  return (
+    <IconContext.Provider value={{ className: 'fav-music-button', size: 25 }}>
+      <BsHeart onClick={handleFavorite} />
+    </IconContext.Provider>
+  );
 }
 
 const mapStateToProps = (state) => ({

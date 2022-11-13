@@ -16,29 +16,33 @@ function MusicCard({
   };
 
   return (
-    <section>
-      <div>
-        <h3>{ musicName }</h3>
-        <h4>
-          From:
+    <section className="album-music-card-container">
+      <aside className="album-music-card">
+        <div className="music-title-container">
+          <h3>{ musicName }</h3>
+          <h4>
+            From:
+            {' '}
+            {artistName}
+          </h4>
+        </div>
+        {location === '/favorites' ? (
+          <Link to={`/album/${albumId}`}>
+            <h6>{albumName}</h6>
+          </Link>
+        ) : null}
+        <audio className="music-audio" onPlay={handlePlay} src={audioUrl} controls>
+          <track kind="captions" />
+          O seu navegador não suporta o elemento
           {' '}
-          {artistName}
-        </h4>
-      </div>
-      {location === '/favorites' ? (
-        <Link to={`/album/${albumId}`}>
-          <h6>{albumName}</h6>
-        </Link>
-      ) : null}
-      <audio onPlay={handlePlay} src={audioUrl} controls>
-        <track kind="captions" />
-        O seu navegador não suporta o elemento
-        {' '}
-        {' '}
-        <code>audio</code>
-      </audio>
-      <FavButton trackId={trackId} />
+          {' '}
+          <code>audio</code>
+        </audio>
+        <FavButton trackId={trackId} />
+      </aside>
+      <hr className="music-hr" />
     </section>
+
   );
 }
 
