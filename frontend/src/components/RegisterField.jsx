@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { FaExclamationCircle } from 'react-icons/fa';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import defaultProfileIcon from '../images/default-profile-icon.png';
 import { validateRegistration } from '../helpers/logonValidate.js';
 import codetuneslogo from '../images/codetuneslogo.png';
@@ -19,15 +21,17 @@ function RegisterField({ history, dispatch, registerMessage }) {
   const policyRef = useRef(null);
   const [form] = useAutoAnimate();
   const [validationMessage, setValidationMessage] = useState('');
+  const [redirectLogin, setRedirectLogin] = useState(false);
 
   useEffect(() => {
-    if (registerMessage === 'Usuario cadastrado com sucesso') {
+    if (registerMessage === 'Usuario cadastrado com sucesso' && redirectLogin) {
       history.push('/');
     }
-  }, [registerMessage]);
+  }, [registerMessage, redirectLogin]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const alert = withReactContent(Swal);
 
     const refs = {
       userName: userNameRef.current.value,
@@ -44,7 +48,15 @@ function RegisterField({ history, dispatch, registerMessage }) {
     if (isValidated !== 'validated') setValidationMessage(isValidated);
     else {
       dispatch(registerUser(refs));
-      setValidationMessage('');
+      alert.fire({
+        title: 'Usuario cadastrado com sucesso',
+        icon: 'success',
+        width: 500,
+        willClose: () => {
+          setRedirectLogin(true);
+          setValidationMessage('');
+        },
+      });
     }
   };
 
@@ -87,7 +99,7 @@ function RegisterField({ history, dispatch, registerMessage }) {
             <h6>{validationMessage}</h6>
           </div>
         ) : null}
-        { registerMessage.length > 0 ? (
+        { registerMessage.length > 0 && registerMessage !== 'Usuario cadastrado com sucesso' ? (
           <div className="register-message-container">
             <FaExclamationCircle />
             <h6>{registerMessage}</h6>
