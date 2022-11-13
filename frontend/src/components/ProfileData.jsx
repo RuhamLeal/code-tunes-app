@@ -11,26 +11,28 @@ function ProfileData({ history, dispatch, userData }) {
   }, []);
 
   return (
-    <main>
-      <section>
+    <main className="profile-main">
+      <section className="profile-data-conteiner">
         { userData ? <img src={userData.img} alt="Profile-img" width={300} /> : null }
+        <section className="profile-data-fields">
+          <div>
+            <h4>Username: </h4>
+            { userData ? <h6>{userData.userName}</h6> : null }
+          </div>
+          <div>
+            <h4>Name: </h4>
+            { userData ? <h6>{userData.name}</h6> : null }
+          </div>
+          <div>
+            <h4>Email: </h4>
+            { userData ? <h6>{userData.email}</h6> : null }
+          </div>
+        </section>
         <div>
-          <h4>Username: </h4>
-          { userData ? <h6>{userData.userName}</h6> : null }
+          <Button onClick={() => history.push('/profile/edit')} variant="Secondary" type="button">
+            <FiEdit />
+          </Button>
         </div>
-        <div>
-          <h4>Name: </h4>
-          { userData ? <h6>{userData.name}</h6> : null }
-        </div>
-        <div>
-          <h4>Email: </h4>
-          { userData ? <h6>{userData.email}</h6> : null }
-        </div>
-      </section>
-      <section>
-        <Button onClick={() => history.push('/profile/edit')} variant="Secondary" type="button">
-          <FiEdit />
-        </Button>
       </section>
     </main>
   );
