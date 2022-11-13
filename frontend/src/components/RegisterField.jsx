@@ -12,6 +12,8 @@ import { validateRegistration } from '../helpers/logonValidate.js';
 import codetuneslogo from '../images/codetuneslogo.png';
 import registerUser from '../redux/actions/registerUser.js';
 
+const alert = withReactContent(Swal);
+
 function RegisterField({ history, dispatch, registerMessage }) {
   const userNameRef = useRef(null);
   const mameRef = useRef(null);
@@ -24,6 +26,17 @@ function RegisterField({ history, dispatch, registerMessage }) {
   const [redirectLogin, setRedirectLogin] = useState(false);
 
   useEffect(() => {
+    if (registerMessage === 'Usuario cadastrado com sucesso' && !redirectLogin) {
+      alert.fire({
+        title: 'Usuario cadastrado com sucesso',
+        icon: 'success',
+        width: 500,
+        willClose: () => {
+          setRedirectLogin(true);
+          setValidationMessage('');
+        },
+      });
+    }
     if (registerMessage === 'Usuario cadastrado com sucesso' && redirectLogin) {
       history.push('/');
     }
@@ -31,7 +44,6 @@ function RegisterField({ history, dispatch, registerMessage }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const alert = withReactContent(Swal);
 
     const refs = {
       userName: userNameRef.current.value,
@@ -48,15 +60,7 @@ function RegisterField({ history, dispatch, registerMessage }) {
     if (isValidated !== 'validated') setValidationMessage(isValidated);
     else {
       dispatch(registerUser(refs));
-      alert.fire({
-        title: 'Usuario cadastrado com sucesso',
-        icon: 'success',
-        width: 500,
-        willClose: () => {
-          setRedirectLogin(true);
-          setValidationMessage('');
-        },
-      });
+      setValidationMessage('');
     }
   };
 
