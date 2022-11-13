@@ -1,14 +1,31 @@
 import PropTypes, { shape } from 'prop-types';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
 import getFavMusics from '../redux/actions/getFavMusics';
 import Loading from './Loading.jsx';
 import MusicCard from './MusicCard';
 
 function FavMusics({ dispatch, favMusics, deletedMusic }) {
+  const [filterFavMusics, setFilterFavMusics] = useState([]);
+
   useEffect(() => {
     dispatch(getFavMusics());
   }, [deletedMusic]);
+
+  useEffect(() => {
+    if (favMusics) setFilterFavMusics(favMusics);
+  }, [favMusics]);
+
+  const handleChange = ({ target }) => {
+    const { value } = target;
+    setFilterFavMusics(
+      favMusics.filter((music) => (
+        music.musicName.toLowerCase().includes(value) || music.musicName.includes(value)
+      )),
+    );
+  };
 
   if (!favMusics) return <Loading />;
   if (favMusics.length === 0) {
@@ -24,7 +41,16 @@ function FavMusics({ dispatch, favMusics, deletedMusic }) {
 
   return (
     <section>
-      { favMusics.map((music) => (
+      <div>
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Search for a music..."
+          className="mb-3 search-input"
+        >
+          <Form.Control onChange={handleChange} type="text" placeholder="Search" />
+        </FloatingLabel>
+      </div>
+      { filterFavMusics.map((music) => (
         <MusicCard
           key={music.trackId}
           trackId={music.trackId}
