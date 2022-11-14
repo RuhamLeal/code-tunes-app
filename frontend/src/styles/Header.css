@@ -1,5 +1,5 @@
 .header-container {
-  background-color: rgb(95, 143, 95);
+  background-color: rgb(241, 252, 241);
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -53,7 +53,7 @@
 #dropdown-basic-button {
   display: flex;
   align-items: center;
-  background-color: rgb(103, 192, 103);
+  background-color: rgb(80, 131, 80);
   justify-content: end;
   border-radius: 20px;
   height: 45px;
