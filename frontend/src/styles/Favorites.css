@@ -9,7 +9,7 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: rgb(195, 214, 191);
+  background-color: rgb(180, 211, 174);
 }
 
 .favorites-musics-main-container {
@@ -28,7 +28,7 @@
 }
 
 .album-music-card {
-  background-color: rgb(195, 214, 191);
+  background-color: rgb(180, 211, 174);
 }
 
 .input-search-container {
