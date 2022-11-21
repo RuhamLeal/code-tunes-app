@@ -1,3 +1,4 @@
+import { getLocalStorageToken } from '../../helpers/localStorage.js';
 import api from '../../services/api.js';
 import { GET_ALBUMS } from './types.js';
 
@@ -6,7 +7,11 @@ export default function getAlbums(query) {
 
   return async (dispatch) => {
     try {
-      const { data } = await api.get(`/albums/${queryFormatted}`);
+      const { data } = await api.get(`/albums/${queryFormatted}`, {
+        headers: {
+          'authorization': `Bearer ${getLocalStorageToken()}`,
+        },
+      });
       dispatch({
         type: GET_ALBUMS,
         payload: {

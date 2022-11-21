@@ -1,4 +1,4 @@
-import { getLocalStorageUserId } from '../../helpers/localStorage.js';
+import { getLocalStorageToken, getLocalStorageUserId } from '../../helpers/localStorage.js';
 import api from '../../services/api.js';
 
 export default function addFavMusic({
@@ -16,9 +16,12 @@ export default function addFavMusic({
         artistName,
         albumName: collectionName,
         albumId: collectionId,
+      }, {
+        headers: {
+          'authorization': `Bearer ${getLocalStorageToken()}`,
+        },
       });
     } catch (err) {
-      global.alert('Erro ao favoritar música, tente novamente');
       console.log(err.response.data.message);
     }
   };

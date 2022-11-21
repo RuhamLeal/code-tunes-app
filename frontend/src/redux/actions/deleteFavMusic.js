@@ -20,7 +20,6 @@ export default function deleteFavMusic({ trackId }) {
         },
       });
     } catch (err) {
-      global.alert('Erro ao deletar música, tente novamente');
       console.log(err.response.data.message);
     }
   };
