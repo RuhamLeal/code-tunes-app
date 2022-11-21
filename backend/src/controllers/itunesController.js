@@ -1,10 +1,10 @@
 import { getMusics, getAlbums } from '../models/Itunes.js';
 
-class itunesController {
+class ItunesController {
   static getItunesMusics = async (req, res) => {
     try {
-      const { id } = req.params;
-      const { album, musics } = await getMusics(id);
+      const { albumId } = req.params;
+      const { album, musics } = await getMusics(albumId);
       res.status(201).json({ album, musics });
     } catch (err) {
       res.status(500).json({ message: err.message });
@@ -13,8 +13,8 @@ class itunesController {
 
   static getItunesAlbums = async (req, res) => {
     try {
-      const { id } = req.params;
-      const response = await getAlbums(id);
+      const { query } = req.params;
+      const response = await getAlbums(query);
       res.status(201).json(response);
     } catch (err) {
       res.status(500).json({ message: err.message });
@@ -22,4 +22,4 @@ class itunesController {
   };
 }
 
-export default itunesController;
+export default ItunesController;
