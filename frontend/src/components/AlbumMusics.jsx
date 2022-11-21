@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import getAlbumMusics from '../redux/actions/getAlbumMusics';
-import Loading from './Loading.jsx';
 import MusicCard from './MusicCard.jsx';
 import getFavMusics from '../redux/actions/getFavMusics';
 
@@ -16,7 +15,7 @@ function AlbumMusics({ dispatch, album, musics }) {
     dispatch(getFavMusics());
   }, []);
 
-  if (!album || !musics) return <Loading />;
+  if (!album || !musics) return null;
 
   const qualityImg = album.artworkUrl100.replace(/100x100/gi, () => '500x500');
 

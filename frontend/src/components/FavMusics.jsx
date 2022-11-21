@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import getFavMusics from '../redux/actions/getFavMusics';
-import Loading from './Loading.jsx';
 import MusicCard from './MusicCard';
 
 function FavMusics({ dispatch, favMusics, deletedMusic }) {
@@ -27,7 +26,7 @@ function FavMusics({ dispatch, favMusics, deletedMusic }) {
     );
   };
 
-  if (!favMusics) return <Loading />;
+  if (!favMusics) return null;
   if (favMusics.length === 0) {
     return (
       <h2 className="empty-fav-music-title">

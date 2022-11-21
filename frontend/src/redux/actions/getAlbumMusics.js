@@ -4,7 +4,8 @@ import api from '../../services/api.js';
 export default function getAlbumMusics(albumId) {
   return async (dispatch) => {
     try {
-      const { album, musics } = await api.get(`/musics/${albumId}`);
+      const { data } = await api.get(`/musics/${albumId}`);
+      const { album, musics } = data;
       dispatch({
         type: GET_ALBUM_MUSICS,
         payload: {

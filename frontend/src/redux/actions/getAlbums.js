@@ -6,7 +6,7 @@ export default function getAlbums(query) {
 
   return async (dispatch) => {
     try {
-      const data = await api.get(`/albums/${queryFormatted}`);
+      const { data } = await api.get(`/albums/${queryFormatted}`);
       dispatch({
         type: GET_ALBUMS,
         payload: {
