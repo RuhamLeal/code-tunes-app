@@ -7,9 +7,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(180, 211, 174);
+  min-width: 100%;
+  min-height: 100%;
+  background-color: rgb(218, 241, 213);
 }
 
 .favorites-musics-main-container {
@@ -28,7 +28,11 @@
 }
 
 .album-music-card {
-  background-color: rgb(180, 211, 174);
+  background-color: rgb(218, 241, 213);
+}
+
+.album-music-card  a {
+  width: 20%;
 }
 
 .input-search-container {
