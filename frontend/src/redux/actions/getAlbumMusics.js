@@ -1,14 +1,10 @@
 import { GET_ALBUM_MUSICS } from './types.js';
+import api from '../../services/api.js';
 
 export default function getAlbumMusics(albumId) {
-  const URL = `https://itunes.apple.com/lookup?id=${albumId}&entity=song`;
-
   return async (dispatch) => {
     try {
-      const response = await fetch(URL);
-      const data = await response.json();
-      const album = data.results[0];
-      const musics = data.results.filter((elem) => elem.wrapperType === 'track');
+      const { album, musics } = await api.get(`/musics/${albumId}`);
       dispatch({
         type: GET_ALBUM_MUSICS,
         payload: {

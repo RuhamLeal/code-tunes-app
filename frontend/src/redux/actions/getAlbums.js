@@ -1,13 +1,12 @@
+import api from '../../services/api.js';
 import { GET_ALBUMS } from './types.js';
 
 export default function getAlbums(query) {
-  const queryUrl = encodeURI(query).replaceAll('%20', '+');
-  const URL = `https://itunes.apple.com/search?entity=album&term=${queryUrl}&attribute=allArtistTerm`;
+  const queryFormatted = encodeURI(query).replaceAll('%20', '+');
 
   return async (dispatch) => {
     try {
-      const response = await fetch(URL);
-      const data = await response.json();
+      const data = await api.get(`/albums/${queryFormatted}`);
       dispatch({
         type: GET_ALBUMS,
         payload: {
