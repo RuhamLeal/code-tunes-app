@@ -6,6 +6,6 @@ const itunesRouter = express.Router();
 
 itunesRouter
   .get('/albums/:query', tokenAuthentication, ItunesController.getItunesAlbums)
-  .get('/musics/:albumId', ItunesController.getItunesMusics);
+  .get('/musics/:albumId', tokenAuthentication, ItunesController.getItunesMusics);
 
 export default itunesRouter;
