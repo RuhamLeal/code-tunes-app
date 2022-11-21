@@ -18,5 +18,6 @@ module.exports = {
     'no-console': 'off',
     'quote-props': 'off',
     'dot-notation': 'off',
+    'consistent-return': 'off',
   },
 };
