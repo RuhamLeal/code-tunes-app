@@ -3,11 +3,17 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
+import { useHistory } from 'react-router-dom';
 import getFavMusics from '../redux/actions/getFavMusics';
 import MusicCard from './MusicCard';
+import { cleanUserLocalStorage } from '../helpers/localStorage';
+import resetAuthorized from '../redux/actions/resetAuthorized';
 
-function FavMusics({ dispatch, favMusics, deletedMusic }) {
+function FavMusics({
+  dispatch, favMusics, deletedMusic, authorized,
+}) {
   const [filterFavMusics, setFilterFavMusics] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getFavMusics());
@@ -16,6 +22,14 @@ function FavMusics({ dispatch, favMusics, deletedMusic }) {
   useEffect(() => {
     if (favMusics) setFilterFavMusics(favMusics);
   }, [favMusics]);
+
+  useEffect(() => {
+    if (!authorized) {
+      cleanUserLocalStorage();
+      dispatch(resetAuthorized());
+      history.push('/');
+    }
+  }, [authorized]);
 
   const handleChange = ({ target }) => {
     const { value } = target;
@@ -70,6 +84,7 @@ FavMusics.propTypes = {
   favMusics: PropTypes.arrayOf(shape()),
   dispatch: PropTypes.func.isRequired,
   deletedMusic: PropTypes.number,
+  authorized: PropTypes.bool.isRequired,
 };
 
 FavMusics.defaultProps = {
@@ -80,6 +95,7 @@ FavMusics.defaultProps = {
 const mapStateToProps = (state) => ({
   favMusics: state.albumReducer.favMusics,
   deletedMusic: state.albumReducer.deletedMusic,
+  authorized: state.albumReducer.authorized,
 });
 
 export default connect(mapStateToProps)(FavMusics);

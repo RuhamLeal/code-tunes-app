@@ -4,14 +4,24 @@ import Button from 'react-bootstrap/Button';
 import { FiEdit } from 'react-icons/fi';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { cleanUserLocalStorage } from '../helpers/localStorage';
 import getUser from '../redux/actions/getUser';
+import resetAuthorized from '../redux/actions/resetAuthorized.js';
 
-function ProfileData({ dispatch, userData }) {
+function ProfileData({ dispatch, userData, authorized }) {
   const history = useHistory();
 
   useEffect(() => {
     dispatch(getUser());
   }, []);
+
+  useEffect(() => {
+    if (!authorized) {
+      cleanUserLocalStorage();
+      dispatch(resetAuthorized());
+      history.push('/');
+    }
+  }, [authorized]);
 
   return (
     <main className="profile-main">
@@ -44,6 +54,7 @@ function ProfileData({ dispatch, userData }) {
 ProfileData.propTypes = {
   userData: PropTypes.shape(),
   dispatch: PropTypes.func.isRequired,
+  authorized: PropTypes.bool.isRequired,
 };
 
 ProfileData.defaultProps = {
@@ -52,6 +63,7 @@ ProfileData.defaultProps = {
 
 const mapStateToProps = (state) => ({
   userData: state.profileReducer.userData,
+  authorized: state.profileReducer.authorized,
 });
 
 export default connect(mapStateToProps)(ProfileData);

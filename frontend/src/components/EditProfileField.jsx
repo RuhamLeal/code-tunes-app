@@ -10,9 +10,12 @@ import { validateProfileEditing } from '../helpers/logonValidate';
 import getUser from '../redux/actions/getUser';
 import updateUser from '../redux/actions/updateUser';
 import cleanUpdatedUserMessage from '../redux/actions/cleanUpdatedUserMessage';
-import { getLocalStorageToken, setLocalStorageUser } from '../helpers/localStorage';
+import { cleanUserLocalStorage, getLocalStorageToken, setLocalStorageUser } from '../helpers/localStorage';
+import resetAuthorized from '../redux/actions/resetAuthorized.js';
 
-function EditProfileField({ dispatch, userData, editResponse }) {
+function EditProfileField({
+  dispatch, userData, editResponse, authorized,
+}) {
   const confirmPassword = useRef(null);
   const history = useHistory();
   const [form] = useAutoAnimate();
@@ -45,6 +48,14 @@ function EditProfileField({ dispatch, userData, editResponse }) {
       });
     }
   }, [userData]);
+
+  useEffect(() => {
+    if (!authorized) {
+      cleanUserLocalStorage();
+      dispatch(resetAuthorized());
+      history.push('/');
+    }
+  }, [authorized]);
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -146,6 +157,7 @@ EditProfileField.propTypes = {
   userData: PropTypes.shape(),
   dispatch: PropTypes.func.isRequired,
   editResponse: PropTypes.string.isRequired,
+  authorized: PropTypes.bool.isRequired,
 };
 
 EditProfileField.defaultProps = {
@@ -155,6 +167,7 @@ EditProfileField.defaultProps = {
 const mapStateToProps = (state) => ({
   userData: state.profileReducer.userData,
   editResponse: state.profileReducer.editResponse,
+  authorized: state.profileReducer.authorized,
 });
 
 export default connect(mapStateToProps)(EditProfileField);
