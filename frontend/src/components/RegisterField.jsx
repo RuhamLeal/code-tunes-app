@@ -7,6 +7,7 @@ import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { FaExclamationCircle } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { useHistory } from 'react-router-dom';
 import defaultProfileIcon from '../images/default-profile-icon.png';
 import { validateRegistration } from '../helpers/logonValidate.js';
 import codetuneslogo from '../images/codetuneslogo.png';
@@ -14,13 +15,14 @@ import registerUser from '../redux/actions/registerUser.js';
 
 const alert = withReactContent(Swal);
 
-function RegisterField({ history, dispatch, registerMessage }) {
+function RegisterField({ dispatch, registerMessage }) {
   const userNameRef = useRef(null);
   const mameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
   const policyRef = useRef(null);
+  const history = useHistory();
   const [form] = useAutoAnimate();
   const [validationMessage, setValidationMessage] = useState('');
   const [redirectLogin, setRedirectLogin] = useState(false);
@@ -122,9 +124,6 @@ const mapStateToProps = (state) => ({
 });
 
 RegisterField.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
   registerMessage: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
 };

@@ -10,3 +10,4 @@ export const GET_USER = 'GET_USER';
 export const UPDATE_USER = 'UPDATE_USER';
 export const CLEAN_UPDATED_USER = 'CLEAN_UPDATED_USER';
 export const TOKEN_ERROR = 'TOKEN_ERROR';
+export const RESET_AUTH = 'RESET_AUTH';

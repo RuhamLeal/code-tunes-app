@@ -3,9 +3,12 @@ import React, { useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { FiEdit } from 'react-icons/fi';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import getUser from '../redux/actions/getUser';
 
-function ProfileData({ history, dispatch, userData }) {
+function ProfileData({ dispatch, userData }) {
+  const history = useHistory();
+
   useEffect(() => {
     dispatch(getUser());
   }, []);
@@ -39,9 +42,6 @@ function ProfileData({ history, dispatch, userData }) {
 }
 
 ProfileData.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
   userData: PropTypes.shape(),
   dispatch: PropTypes.func.isRequired,
 };

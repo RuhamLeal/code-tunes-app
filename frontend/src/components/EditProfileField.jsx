@@ -5,18 +5,18 @@ import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { connect } from 'react-redux';
 import { FaExclamationCircle } from 'react-icons/fa';
 import Button from 'react-bootstrap/Button';
+import { useHistory } from 'react-router-dom';
 import { validateProfileEditing } from '../helpers/logonValidate';
 import getUser from '../redux/actions/getUser';
 import updateUser from '../redux/actions/updateUser';
 import cleanUpdatedUserMessage from '../redux/actions/cleanUpdatedUserMessage';
 import { getLocalStorageToken, setLocalStorageUser } from '../helpers/localStorage';
 
-function EditProfileField({
-  history, dispatch, userData, editResponse,
-}) {
+function EditProfileField({ dispatch, userData, editResponse }) {
+  const confirmPassword = useRef(null);
+  const history = useHistory();
   const [form] = useAutoAnimate();
   const [validationMessage, setValidationMessage] = useState('');
-  const confirmPassword = useRef(null);
   const [checkPasswordMessage, setPasswordMessage] = useState('');
   const [editUserData, setEditUserData] = useState({
     userName: '',
@@ -143,9 +143,6 @@ function EditProfileField({
 }
 
 EditProfileField.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
   userData: PropTypes.shape(),
   dispatch: PropTypes.func.isRequired,
   editResponse: PropTypes.string.isRequired,

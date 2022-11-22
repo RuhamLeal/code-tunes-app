@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
@@ -6,10 +6,22 @@ import { IconContext } from 'react-icons';
 import { BsSearch } from 'react-icons/bs';
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import getAlbums from '../redux/actions/getAlbums';
+import { cleanUserLocalStorage } from '../helpers/localStorage';
+import resetAuthorized from '../redux/actions/resetAuthorized.js';
 
-function SearchField({ dispatch }) {
+function SearchField({ dispatch, authorized }) {
   const searchRef = useRef(null);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!authorized) {
+      cleanUserLocalStorage();
+      dispatch(resetAuthorized());
+      history.push('/');
+    }
+  }, [authorized]);
 
   const handleSearch = () => {
     dispatch(getAlbums(searchRef.current.value));
@@ -33,8 +45,13 @@ function SearchField({ dispatch }) {
   );
 }
 
+const mapStateToProps = (state) => ({
+  authorized: state.searchReducer.authorized,
+});
+
 SearchField.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  authorized: PropTypes.bool.isRequired,
 };
 
-export default connect()(SearchField);
+export default connect(mapStateToProps)(SearchField);

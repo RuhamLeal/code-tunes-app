@@ -6,22 +6,22 @@ import { cleanUserLocalStorage } from '../helpers/localStorage';
 import '../styles/Login.css';
 import cleanRegisterMessage from '../redux/actions/cleanRegisterMessage';
 
-function Login({ history, dispatch }) {
+function Login({ dispatch }) {
   useEffect(() => {
     cleanUserLocalStorage();
     dispatch(cleanRegisterMessage());
   }, []);
+
   return (
     <main className="login-page">
       <section className="login-main-container">
-        <LoginField history={history} />
+        <LoginField />
       </section>
     </main>
   );
 }
 
 Login.propTypes = {
-  history: PropTypes.shape().isRequired,
   dispatch: PropTypes.func.isRequired,
 };
 

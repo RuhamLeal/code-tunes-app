@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
@@ -10,9 +10,10 @@ import loginValidate from '../helpers/loginValidate.js';
 import logUser from '../redux/actions/logUser.js';
 import cleanLogUser from '../redux/actions/cleanLogUser.js';
 
-function LoginField({ history, dispatch, logMessage }) {
+function LoginField({ dispatch, logMessage }) {
   const userNameRef = useRef(null);
   const passwordRef = useRef(null);
+  const history = useHistory();
   const [fieldsContainer] = useAutoAnimate();
   const [emptyFields, setEmptyFields] = useState(false);
   const [NotFoundUser, setNotFoundUser] = useState(false);
@@ -91,9 +92,6 @@ const mapStateToProps = (state) => ({
 });
 
 LoginField.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
   logMessage: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
 };

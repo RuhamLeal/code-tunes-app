@@ -1,4 +1,4 @@
-import { GET_ALBUMS, TOKEN_ERROR } from '../actions/types.js';
+import { GET_ALBUMS, RESET_AUTH, TOKEN_ERROR } from '../actions/types.js';
 
 const INITIAL_STATE = {
   albumData: null,
@@ -18,6 +18,10 @@ function searchReducer(state = INITIAL_STATE, action) {
     case TOKEN_ERROR: return {
       ...state,
       authorized: false,
+    };
+    case RESET_AUTH: return {
+      ...state,
+      authorized: true,
     };
     default: return state;
   }

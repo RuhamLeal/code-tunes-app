@@ -1,5 +1,5 @@
 import {
-  GET_USER, UPDATE_USER, CLEAN_UPDATED_USER, TOKEN_ERROR,
+  GET_USER, UPDATE_USER, CLEAN_UPDATED_USER, TOKEN_ERROR, RESET_AUTH,
 } from '../actions/types.js';
 
 const INITIAL_STATE = {
@@ -25,6 +25,10 @@ function profileReducer(state = INITIAL_STATE, action) {
     case TOKEN_ERROR: return {
       ...state,
       authorized: false,
+    };
+    case RESET_AUTH: return {
+      ...state,
+      authorized: true,
     };
     default: return state;
   }

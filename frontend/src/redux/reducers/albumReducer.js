@@ -1,5 +1,5 @@
 import {
-  DELETE_MUSIC, GET_ALBUM_MUSICS, GET_FAV_MUSICS, TOKEN_ERROR,
+  DELETE_MUSIC, GET_ALBUM_MUSICS, GET_FAV_MUSICS, RESET_AUTH, TOKEN_ERROR,
 } from '../actions/types.js';
 
 const INITIAL_STATE = {
@@ -28,6 +28,10 @@ function albumReducer(state = INITIAL_STATE, action) {
     case TOKEN_ERROR: return {
       ...state,
       authorized: false,
+    };
+    case RESET_AUTH: return {
+      ...state,
+      authorized: true,
     };
     default: return state;
   }

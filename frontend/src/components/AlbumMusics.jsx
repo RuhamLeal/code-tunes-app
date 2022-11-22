@@ -1,19 +1,32 @@
 import PropTypes, { shape } from 'prop-types';
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import getAlbumMusics from '../redux/actions/getAlbumMusics';
 import MusicCard from './MusicCard.jsx';
 import getFavMusics from '../redux/actions/getFavMusics';
+import { cleanUserLocalStorage } from '../helpers/localStorage';
+import resetAuthorized from '../redux/actions/resetAuthorized.js';
 
-function AlbumMusics({ dispatch, album, musics }) {
+function AlbumMusics({
+  dispatch, album, musics, authorized,
+}) {
   const { albumId } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getAlbumMusics(Number(albumId)));
     dispatch(getFavMusics());
   }, []);
+
+  useEffect(() => {
+    if (!authorized) {
+      cleanUserLocalStorage();
+      dispatch(resetAuthorized());
+      history.push('/');
+    }
+  }, [authorized]);
 
   if (!album || !musics) return null;
 
@@ -51,6 +64,7 @@ AlbumMusics.propTypes = {
   dispatch: PropTypes.func.isRequired,
   album: PropTypes.shape(),
   musics: PropTypes.arrayOf(shape()),
+  authorized: PropTypes.bool.isRequired,
 };
 
 AlbumMusics.defaultProps = {
@@ -61,6 +75,7 @@ AlbumMusics.defaultProps = {
 const mapStateToProps = (state) => ({
   album: state.albumReducer.album,
   musics: state.albumReducer.musics,
+  authorized: state.albumReducer.authorized,
 });
 
 export default connect(mapStateToProps)(AlbumMusics);
