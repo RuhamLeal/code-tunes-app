@@ -1,12 +1,11 @@
-import { getLocalStorageToken, getLocalStorageUserId } from '../../helpers/localStorage.js';
+import { getLocalStorageToken } from '../../helpers/localStorage.js';
 import api from '../../services/api.js';
 import { GET_USER } from './types.js';
 
 export default function getUser() {
-  const userId = getLocalStorageUserId();
   return async (dispatch) => {
     try {
-      const response = await api.get(`/user/${userId}`, {
+      const response = await api.get('/user', {
         headers: {
           'authorization': `Bearer ${getLocalStorageToken()}`,
         },

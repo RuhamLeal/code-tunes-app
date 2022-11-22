@@ -9,7 +9,7 @@ import { validateProfileEditing } from '../helpers/logonValidate';
 import getUser from '../redux/actions/getUser';
 import updateUser from '../redux/actions/updateUser';
 import cleanUpdatedUserMessage from '../redux/actions/cleanUpdatedUserMessage';
-import { getLocalStorageUserId, setLocalStorageUser } from '../helpers/localStorage';
+import { getLocalStorageToken, setLocalStorageUser } from '../helpers/localStorage';
 
 function EditProfileField({
   history, dispatch, userData, editResponse,
@@ -71,7 +71,7 @@ function EditProfileField({
       setPasswordMessage('');
       setValidationMessage(isValidated);
     } else {
-      setLocalStorageUser(editedUserData.userName, getLocalStorageUserId());
+      setLocalStorageUser(editedUserData.userName, getLocalStorageToken());
       dispatch(updateUser(editedUserData));
       setValidationMessage('');
       setPasswordMessage(editResponse);

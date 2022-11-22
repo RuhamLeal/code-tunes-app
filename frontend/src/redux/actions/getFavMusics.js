@@ -1,13 +1,11 @@
-import { getLocalStorageToken, getLocalStorageUserId } from '../../helpers/localStorage.js';
+import { getLocalStorageToken } from '../../helpers/localStorage.js';
 import api from '../../services/api.js';
 import { GET_FAV_MUSICS } from './types.js';
 
 export default function getFavMusics() {
-  const userId = getLocalStorageUserId();
-
   return async (dispatch) => {
     try {
-      const response = await api.get(`/fav-musics/${userId}`, {
+      const response = await api.get('/fav-musics', {
         headers: {
           'authorization': `Bearer ${getLocalStorageToken()}`,
         },

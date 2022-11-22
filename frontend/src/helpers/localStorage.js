@@ -1,7 +1,6 @@
-export const setLocalStorageUser = (username, userId, token) => {
+export const setLocalStorageUser = (username, token) => {
   localStorage.setItem('user', JSON.stringify({
     username,
-    userId,
     token,
   }));
 };
@@ -9,12 +8,6 @@ export const setLocalStorageUser = (username, userId, token) => {
 export const getLocalStorageUsername = () => {
   if (localStorage.getItem('user')) {
     return JSON.parse(localStorage.getItem('user')).username;
-  } return '';
-};
-
-export const getLocalStorageUserId = () => {
-  if (localStorage.getItem('user')) {
-    return JSON.parse(localStorage.getItem('user')).userId;
   } return '';
 };
 
