@@ -1,6 +1,6 @@
 import { getLocalStorageToken } from '../../helpers/localStorage.js';
 import api from '../../services/api.js';
-import { UPDATE_USER } from './types.js';
+import { TOKEN_ERROR, UPDATE_USER } from './types.js';
 
 export default function updateUser(updatedUser) {
   return async (dispatch) => {
@@ -17,12 +17,19 @@ export default function updateUser(updatedUser) {
         },
       });
     } catch (err) {
-      dispatch({
-        type: UPDATE_USER,
-        payload: {
-          editResponse: err.response.data.message,
-        },
-      });
+      if (err.response.data.tokenErr) {
+        dispatch({
+          type: TOKEN_ERROR,
+        });
+      }
+      if (err.response.data.message) {
+        dispatch({
+          type: UPDATE_USER,
+          payload: {
+            editResponse: err.response.data.message,
+          },
+        });
+      }
     }
   };
 }

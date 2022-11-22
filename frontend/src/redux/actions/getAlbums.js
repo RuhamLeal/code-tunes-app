@@ -1,6 +1,6 @@
 import { getLocalStorageToken } from '../../helpers/localStorage.js';
 import api from '../../services/api.js';
-import { GET_ALBUMS } from './types.js';
+import { GET_ALBUMS, TOKEN_ERROR } from './types.js';
 
 export default function getAlbums(query) {
   const queryFormatted = encodeURI(query).replaceAll('%20', '+');
@@ -20,7 +20,11 @@ export default function getAlbums(query) {
         },
       });
     } catch (err) {
-      global.alert('Erro ao realizar a busca, tente novamente...');
+      if (err.response.data.tokenErr) {
+        dispatch({
+          type: TOKEN_ERROR,
+        });
+      }
     }
   };
 }

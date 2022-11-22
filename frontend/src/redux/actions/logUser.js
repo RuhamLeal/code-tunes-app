@@ -10,8 +10,7 @@ export default function logUser(user) {
         userName,
         passWord,
       });
-      console.log(response);
-      setLocalStorageUser(userName, response.data.userId, response.data.token);
+      setLocalStorageUser(userName, response.data.token);
       dispatch({
         type: LOG_USER,
         payload: {

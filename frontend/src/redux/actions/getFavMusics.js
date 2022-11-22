@@ -1,6 +1,6 @@
 import { getLocalStorageToken } from '../../helpers/localStorage.js';
 import api from '../../services/api.js';
-import { GET_FAV_MUSICS } from './types.js';
+import { GET_FAV_MUSICS, TOKEN_ERROR } from './types.js';
 
 export default function getFavMusics() {
   return async (dispatch) => {
@@ -17,7 +17,11 @@ export default function getFavMusics() {
         },
       });
     } catch (err) {
-      console.log(err.response.data.message);
+      if (err.response.data.tokenErr) {
+        dispatch({
+          type: TOKEN_ERROR,
+        });
+      }
     }
   };
 }

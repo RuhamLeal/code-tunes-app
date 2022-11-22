@@ -1,10 +1,11 @@
 import { getLocalStorageToken } from '../../helpers/localStorage.js';
 import api from '../../services/api.js';
+import { TOKEN_ERROR } from './types.js';
 
 export default function addFavMusic({
   previewUrl, trackName, trackId, collectionId, artistName, collectionName,
 }) {
-  return async () => {
+  return async (dispatch) => {
     try {
       await api.post('/fav-musics', {
         trackId,
@@ -19,7 +20,11 @@ export default function addFavMusic({
         },
       });
     } catch (err) {
-      console.log(err.response.data.message);
+      if (err.response.data.tokenErr) {
+        dispatch({
+          type: TOKEN_ERROR,
+        });
+      }
     }
   };
 }

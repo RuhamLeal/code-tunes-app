@@ -1,8 +1,11 @@
-import { GET_USER, UPDATE_USER, CLEAN_UPDATED_USER } from '../actions/types.js';
+import {
+  GET_USER, UPDATE_USER, CLEAN_UPDATED_USER, TOKEN_ERROR,
+} from '../actions/types.js';
 
 const INITIAL_STATE = {
   userData: null,
   editResponse: '',
+  authorized: true,
 };
 
 function profileReducer(state = INITIAL_STATE, action) {
@@ -18,6 +21,10 @@ function profileReducer(state = INITIAL_STATE, action) {
     case CLEAN_UPDATED_USER: return {
       ...state,
       editResponse: '',
+    };
+    case TOKEN_ERROR: return {
+      ...state,
+      authorized: false,
     };
     default: return state;
   }

@@ -1,9 +1,10 @@
-import { GET_ALBUMS } from '../actions/types.js';
+import { GET_ALBUMS, TOKEN_ERROR } from '../actions/types.js';
 
 const INITIAL_STATE = {
   albumData: null,
   albumQuant: 0,
   query: '',
+  authorized: true,
 };
 
 function searchReducer(state = INITIAL_STATE, action) {
@@ -13,6 +14,10 @@ function searchReducer(state = INITIAL_STATE, action) {
       albumData: action.payload.data.results,
       albumQuant: action.payload.data.resultCount,
       query: action.payload.query,
+    };
+    case TOKEN_ERROR: return {
+      ...state,
+      authorized: false,
     };
     default: return state;
   }

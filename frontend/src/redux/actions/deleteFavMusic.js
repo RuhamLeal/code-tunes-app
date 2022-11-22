@@ -1,6 +1,6 @@
 import { getLocalStorageToken } from '../../helpers/localStorage.js';
 import api from '../../services/api.js';
-import { DELETE_MUSIC } from './types.js';
+import { DELETE_MUSIC, TOKEN_ERROR } from './types.js';
 
 export default function deleteFavMusic({ trackId }) {
   return async (dispatch) => {
@@ -20,7 +20,11 @@ export default function deleteFavMusic({ trackId }) {
         },
       });
     } catch (err) {
-      console.log(err.response.data.message);
+      if (err.response.data.tokenErr) {
+        dispatch({
+          type: TOKEN_ERROR,
+        });
+      }
     }
   };
 }
