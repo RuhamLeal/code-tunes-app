@@ -8,6 +8,7 @@ function MusicCard({
   audioUrl, musicName, trackId, artistName, albumId, albumName,
 }) {
   const location = useLocation().pathname;
+
   const handlePlay = ({ target }) => {
     const audios = getAllAudios();
     audios.forEach((audio) => {

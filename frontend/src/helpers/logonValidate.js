@@ -6,8 +6,9 @@ const validateUsername = (username) => {
 };
 
 const validateName = (name) => {
+  const re = /^\s|\s[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ']+$/;
   if (name.length === 0) return 'Preencha todos os campos';
-  if (name.indexOf(' ') === -1) return 'Insira seu nome completo';
+  if (!re.test(name)) return 'Nome incompleto ou inválido';
   return 'validated';
 };
 
