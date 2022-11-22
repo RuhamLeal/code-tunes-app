@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-const newUserSchema = Joi.object({
+const validUserSchema = Joi.object({
   userName: Joi.string()
     .min(4)
     .pattern(/^\S*$/)
@@ -30,4 +30,4 @@ const newUserSchema = Joi.object({
     .required(),
 });
 
-export default newUserSchema;
+export default validUserSchema;
