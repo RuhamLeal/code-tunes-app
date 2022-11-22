@@ -5,7 +5,7 @@ import tokenAuthentication from '../middlewares/authentication.js';
 const musicRouter = express.Router();
 
 musicRouter
-  .get('/fav-musics/:userId', tokenAuthentication, MusicController.showFavMusics)
+  .get('/fav-musics', tokenAuthentication, MusicController.showFavMusics)
   .post('/fav-musics', tokenAuthentication, MusicController.addFavMusic)
   .delete('/fav-musics', tokenAuthentication, MusicController.deleteFavMusic);
 

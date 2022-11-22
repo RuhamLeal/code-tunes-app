@@ -2,7 +2,7 @@ import Music from '../models/Music.js';
 
 class MusicController {
   static showFavMusics = (req, res) => {
-    const { userId } = req.params;
+    const { userId } = req;
     Music.find({ 'userId': userId }, {}, (err, foundMusics) => {
       if (err) {
         res.status(500).json({ message: `${err.message} Nao foi encontrada nenhuma musica (Verifica o id passado)` });
@@ -11,7 +11,8 @@ class MusicController {
   };
 
   static addFavMusic = (req, res) => {
-    const newMusic = new Music(req.body);
+    const { userId } = req;
+    const newMusic = new Music({ ...req.body, userId });
 
     newMusic.save((err) => {
       if (err) {
@@ -26,7 +27,8 @@ class MusicController {
   };
 
   static deleteFavMusic = (req, res) => {
-    const { trackId, userId } = req.body;
+    const { trackId } = req.body;
+    const { userId } = req;
 
     Music.findOneAndDelete({ 'trackId': trackId, 'userId': userId }, {}, (err) => {
       if (err) res.status(500).json({ message: `${err.message} - Musica não encontrada ou inexistente` });
