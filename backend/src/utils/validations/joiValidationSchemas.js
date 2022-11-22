@@ -15,9 +15,9 @@ const validUserSchema = Joi.object({
 
   name: Joi.string()
     .min(1)
-    .pattern(/\s/)
+    .pattern(/^\s|\s[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ']+$/)
     .message({
-      'string.pattern.base': 'Full name required',
+      'string.pattern.base': 'Full name required --- numbers and special characters are not allowed',
     })
     .required(),
 
