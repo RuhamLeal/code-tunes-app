@@ -28,6 +28,8 @@ const validUserSchema = Joi.object({
       'string.pattern.base': 'Invalid email',
     })
     .required(),
+
+  img: Joi.string(),
 });
 
 export default validUserSchema;
