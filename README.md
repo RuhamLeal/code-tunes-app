@@ -68,6 +68,8 @@ Project have more endpoints, install repo and see more !
 
 ### Installation  
 
+* remembering that this project runs remotely in aws with a cloud database (MongoDB)
+
 Inside the project repo you can see the project files in more detail.
 
 Clone the repo:     
