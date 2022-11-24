@@ -47,7 +47,7 @@ The application works with its own api to manage the users and their favorite so
 
 The email and username fields have checks in the database so as not to have usernames and emails repeated, the application also checks the password in the database with the password passed by the user to log in and update some information         
 
-More details about the functionalities of each page:     
+#### More details about the functionalities of each page:     
 
 Login page, url(http://15.228.199.125:3002) : On this page you can login with your registered account, in case you haven't registered yet, there is a link that redirects you to the registration page           
 
