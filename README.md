@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# code-tunes-app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Full-stack project using React, redux, hooks, bootstrap on the frontend and Node.js, express, MongoDB and JWT on the backend          
 
-## Available Scripts
+Personal project that I did with the knowledge that I acquired in the last months of study, at trybe and other courses that I also took, first project that I implemented the two sides of an application and I was proud of the result
 
-In the project directory, you can run:
 
-### `npm start`
+# Table of contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Getting Started](#getting-started)
+- [Preview](#preview)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Contact](#contact)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+# Preview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[code-tunes_AdobeExpress](https://user-images.githubusercontent.com/104790789/203870104-6810cd6f-faca-4392-aa2c-750937fbe104.gif)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This API was developed by me and it works with a mongoDB database, some endpoints have validations with JWT and are working with route management, it works remote and also works locally and you need to download the repository     
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The api was uploaded with a public IP through the AWS cloud system with EC2. To see the code of the project you can install it locally ( Below you will find the instructions ).      
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+API BASE URL: http://15.228.199.125:3003
+APP BASE URL: http://15.228.199.125:3002  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Project have more endpoints, install repo and see more !
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Prerequisites
 
-## Learn More
+node 16 version         
+MySQL 5.7 version or 8.0 version        
+Docker(v20.10) and docker-compose(v2.5.0) (If you dont have MySQL installed)        
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Installation  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Clone the repo:     
+```
+git clone https://github.com/RuhamLeal/store-manager-api.git    
+```
 
-### Code Splitting
+Go to project folder:     
+```
+cd store-manager-api   
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Install dependencies:     
+```
+npm install    
+```
 
-### Analyzing the Bundle Size
+Populate database with scripts:    
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+migration.sql then seed.sql
 
-### Making a Progressive Web App
+Run server:
+```
+npm start    
+```           
+               
+                  
+                    
+                     
+### If you dont have node 16 version or MySQL installed, you can run with docker-compose:   
+```
+docker-compose up -d
+```
+ 
+Await download the images and then:    
+```
+docker exec -it store_manager bash
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Inside the container, install dependecies:       
+```
+npm install
+```
 
-### Advanced Configuration
+Populate database with scripts:    
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+migration.sql then seed.sql
 
-### Deployment
+And run server:       
+```
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Tests
 
-### `npm run build` fails to minify
+The aplication has unit tests for all layers, run with:
+```
+npm run test:mocha
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Contact
+
+Ruham Leal    
+Email: ruhamxlpro@hotmail.com    
+Linkedin: https://www.linkedin.com/in/ruham-leal-dos-santos-sutil-38a837243/
