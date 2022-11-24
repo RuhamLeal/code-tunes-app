@@ -36,8 +36,6 @@ This API works with a mongoDB database, some endpoints have validations with JWT
 
 The api was uploaded with a public IP through the AWS cloud system with EC2. To see the code of the project you can install it locally ( Below you will find the instructions ).       
 
-The token expires in 6 minutes, this time is for testing the site and to see the functionalities of the token because when it expires you cannot make requests and are redirected to the login page again
-
 
 
 API BASE URL: http://15.228.199.125:3003        
@@ -49,7 +47,9 @@ Project have more endpoints, install repo and see more !
 
 The application works with its own api to manage the users and their favorite songs saved by them and an external itunes api to list some music previews 
 
-The email and username fields have checks in the database so as not to have usernames and emails repeated, the application also checks the password in the database with the password passed by the user to log in and update some information         
+The email and username fields have checks in the database so as not to have usernames and emails repeated, the application also checks the password in the database with the password passed by the user to log in and update some information          
+ 
+The token expires in 6 minutes, this time is for testing the site and to see the functionalities of the token because when it expires you cannot make requests and are redirected to the login page again
 
 #### More details about the functionalities of each page:     
 
