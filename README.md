@@ -16,7 +16,7 @@ Personal project that I did with the knowledge that I acquired in the last month
 
 # Preview
 
-[code-tunes_AdobeExpress](https://user-images.githubusercontent.com/104790789/203870104-6810cd6f-faca-4392-aa2c-750937fbe104.gif)
+(https://user-images.githubusercontent.com/104790789/203870104-6810cd6f-faca-4392-aa2c-750937fbe104.gif)
 
 
 ## Getting Started
