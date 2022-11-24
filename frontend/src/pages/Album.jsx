@@ -7,7 +7,7 @@ import '../styles/Album.css';
 function Album() {
   const [musicsSections] = useAutoAnimate();
   return (
-    <main>
+    <main className="album-main">
       <Header />
       <main className="album-page" ref={musicsSections}>
         <AlbumMusics />
