@@ -1,0 +1,61 @@
+.header-container {
+  background-color: rgb(250, 255, 250);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 120px;
+}
+
+.header-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 270px;
+  gap: 15px;
+}
+
+.header-logo {
+  margin-left: 50px;
+}
+
+.header-link {
+  text-decoration: none;
+  font-size: 40px;
+  color: black;
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.header-link:hover {
+  font-size: 42px;
+  color: rgb(15, 15, 15);
+}
+
+.header-barr {
+  font-size: 50px;
+  font-weight: 10;
+}
+
+.header-dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 45px;
+  margin-left: 30px;
+}
+
+.header-dropdown-icon {
+  color: white;
+  position: relative;
+  z-index: 1;
+  left: 70px;
+}
+
+#dropdown-basic-button {
+  display: flex;
+  align-items: center;
+  background-color: rgb(80, 131, 80);
+  justify-content: end;
+  border-radius: 20px;
+  height: 45px;
+  min-width: 180px;
+}
