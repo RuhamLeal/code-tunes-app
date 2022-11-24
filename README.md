@@ -76,36 +76,6 @@ Go to project folder:
 cd code-tunes-app
 ```
           
-### If you dont have node 16 version or MySQL installed, you can run with docker-compose:   
-```
-docker-compose up -d
-```
- 
-Await download the images and then:    
-```
-docker exec -it store_manager bash
-```
-
-Inside the container, install dependecies:       
-```
-npm install
-```
-
-Populate database with scripts:    
-
-migration.sql then seed.sql
-
-And run server:       
-```
-npm start
-```
-
-### Tests
-
-The aplication has unit tests for all layers, run with:
-```
-npm run test:mocha
-```
 
 ### Contact
 
