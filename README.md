@@ -32,9 +32,9 @@ https://user-images.githubusercontent.com/104790789/203874295-d8996932-f76b-4d29
 
 ## Getting Started
 
-This API works with a mongoDB database, some endpoints have validations with JWT and are working with route management, it works remote and also works locally and you need to download the repository     
+- This API works with a mongoDB database, some endpoints have validations with JWT and are working with route management, it works remote and also works locally and you need to download the repository     
 
-The api was uploaded with a public IP through the AWS cloud system with EC2. To see the code of the project you can install it locally ( Below you will find the instructions ).       
+- The api was uploaded with a public IP through the AWS cloud system with EC2. To see the code of the project you can install it locally ( Below you will find the instructions ).       
 
 
 
@@ -45,25 +45,25 @@ Project have more endpoints, install repo and see more !
 
 ### More Info
 
-The application works with its own api to manage the users and their favorite songs saved by them and an external itunes api to list some music previews 
+- The application works with its own api to manage the users and their favorite songs saved by them and an external itunes api to list some music previews 
 
-The email and username fields have checks in the database so as not to have usernames and emails repeated, the application also checks the password in the database with the password passed by the user to log in and update some information          
+- The email and username fields have checks in the database so as not to have usernames and emails repeated, the application also checks the password in the database with the password passed by the user to log in and update some information          
  
-The token expires in 6 minutes, this time is for testing the site and to see the functionalities of the token because when it expires you cannot make requests and are redirected to the login page again
+- The token expires in 6 minutes, this time is for testing the site and to see the functionalities of the token because when it expires you cannot make requests and are redirected to the login page again
 
 #### More details about the functionalities of each page:     
 
-Login page, url(http://15.228.199.125:3002) : On this page you can login with your registered account, in case you haven't registered yet, there is a link that redirects you to the registration page           
+* Login page, url(http://15.228.199.125:3002) : On this page you can login with your registered account, in case you haven't registered yet, there is a link that redirects you to the registration page           
 
-Register Page url(http://15.228.199.125:3002/register): On this page you can register, it has several registration validations to filter data correctly after registering you go to the login page
+* Register Page url(http://15.228.199.125:3002/register): On this page you can register, it has several registration validations to filter data correctly after registering you go to the login page
 
-Home page url(http://15.228.199.125:3002/search): On this page you can search for artists and albums through the input and you are redirected to the album and its songs page when you click on one. There is a header with links that go to the home and favorites and there is a dropdown where your user name appears and you can go to your profile and log out
+* Home page url(http://15.228.199.125:3002/search): On this page you can search for artists and albums through the input and you are redirected to the album and its songs page when you click on one. There is a header with links that go to the home and favorites and there is a dropdown where your user name appears and you can go to your profile and log out
 
-Album page url(http://15.228.199.125:3002/album/:albumId) : This page shows all the songs of the album and you can favorite, and listen to the preview of the songs
+* Album page url(http://15.228.199.125:3002/album/:albumId) : This page shows all the songs of the album and you can favorite, and listen to the preview of the songs
 
-Favorite page url(http://15.228.199.125:3002/favorites) : On this page you can see your favorite songs already liked and if you want you can remove them from your favorites again
+* Favorite page url(http://15.228.199.125:3002/favorites) : On this page you can see your favorite songs already liked and if you want you can remove them from your favorites again
 
-Profile Page url(http://15.228.199.125:3002/profile) : On this page you can see your registered information and there is a button that allows you to edit the information
+* Profile Page url(http://15.228.199.125:3002/profile) : On this page you can see your registered information and there is a button that allows you to edit the information
   
 
 ### Installation  
