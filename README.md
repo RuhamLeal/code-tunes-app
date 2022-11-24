@@ -55,7 +55,7 @@ Register Page url(http://15.228.199.125:3002/register): On this page you can reg
 
 Home page url(http://15.228.199.125:3002/search): On this page you can search for artists and albums through the input and you are redirected to the album and its songs page when you click on one. There is a header with links that go to the home and favorites and there is a dropdown where your user name appears and you can go to your profile and log out
 
-Album page url(http://15.228.199.125:3002/album/:albumId) : This page shows all the songs of the album and you can enjoy, and listen to the preview of the songs
+Album page url(http://15.228.199.125:3002/album/:albumId) : This page shows all the songs of the album and you can favorite, and listen to the preview of the songs
 
 Favorite page url(http://15.228.199.125:3002/favorites) : On this page you can see your favorite songs already liked and if you want you can remove them from your favorites again
 
