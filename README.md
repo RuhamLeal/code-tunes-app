@@ -30,12 +30,14 @@ https://user-images.githubusercontent.com/104790789/203871012-33efb106-1136-4ee2
 
 This API works with a mongoDB database, some endpoints have validations with JWT and are working with route management, it works remote and also works locally and you need to download the repository     
 
-The api was uploaded with a public IP through the AWS cloud system with EC2. To see the code of the project you can install it locally ( Below you will find the instructions ).      
+The api was uploaded with a public IP through the AWS cloud system with EC2. To see the code of the project you can install it locally ( Below you will find the instructions ).       
+
+The token expires in 6 minutes, this time is for testing the site and to see the functionalities of the token because when it expires you cannot make requests and are redirected to the login page again
 
 
 
 API BASE URL: http://15.228.199.125:3003        
-APP BASE URL: http://15.228.199.125:3002  
+CLIENT-SIDE BASE URL: http://15.228.199.125:3002  
 
 Project have more endpoints, install repo and see more !
 
