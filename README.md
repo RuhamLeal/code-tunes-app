@@ -20,7 +20,11 @@ Personal project that I did with the knowledge that I acquired in the last month
 
 
 
-https://user-images.githubusercontent.com/104790789/203871012-33efb106-1136-4ee2-8350-dc3234ddd562.mp4
+
+
+https://user-images.githubusercontent.com/104790789/203874295-d8996932-f76b-4d29-ad67-0c09ba6011d8.mp4
+
+
 
 
 
