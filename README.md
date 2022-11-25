@@ -34,6 +34,8 @@ https://user-images.githubusercontent.com/104790789/203874295-d8996932-f76b-4d29
 
 - This API works with a mongoDB database, some endpoints have validations with JWT and are working with route management, it works remote. 
 
+- You will need to install the application frontend locally, below are the instructions. The api is already running in the cloud
+
 - The api was uploaded with a public IP through the AWS cloud system with EC2. To see the code of the project you can install it locally ( Below you will find the instructions ).       
 
 
@@ -67,7 +69,7 @@ Project have more endpoints, install repo and see more !
 
 ### Installation  
 
-* remembering that this project runs remotely in aws with a cloud database (MongoDB)
+* remembering that API runs remotely in aws with a cloud database (MongoDB)
 
 Inside the project repo you can see the project files in more detail.
 
@@ -78,7 +80,15 @@ git clone https://github.com/RuhamLeal/code-tunes-app.git
 
 Go to project folder:     
 ```
-cd code-tunes-app
+cd code-tunes-app/frontend
+```
+Install dependencies and run the script:     
+```
+npm install
+```
+
+```
+npm start
 ```
           
 
