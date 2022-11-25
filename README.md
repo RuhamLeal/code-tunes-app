@@ -32,7 +32,7 @@ https://user-images.githubusercontent.com/104790789/203874295-d8996932-f76b-4d29
 
 ## Getting Started
 
-- This API works with a mongoDB database, some endpoints have validations with JWT and are working with route management, it works remote and also works locally and you need to download the repository     
+- This API works with a mongoDB database, some endpoints have validations with JWT and are working with route management, it works remote. 
 
 - The api was uploaded with a public IP through the AWS cloud system with EC2. To see the code of the project you can install it locally ( Below you will find the instructions ).       
 
