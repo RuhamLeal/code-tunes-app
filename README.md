@@ -38,8 +38,8 @@ https://user-images.githubusercontent.com/104790789/203874295-d8996932-f76b-4d29
 
 
 
-API BASE URL: http://15.228.199.125:3003        
-CLIENT-SIDE BASE URL: http://15.228.199.125:3002  
+API BASE URL: http://18.229.143.23:3003        
+CLIENT-SIDE BASE URL: http://18.229.143.23:3002  
 
 Project have more endpoints, install repo and see more !
 
