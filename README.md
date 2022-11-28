@@ -48,7 +48,7 @@ Project have more endpoints, install repo and see more !
 
 - The application works with its own api to manage the users and their favorite songs saved by them and an external itunes api to list some music previews 
 
-- The email and username fields have checks in the database so as not to have usernames and emails repeated, the application also checks the password in the database with the password passed by the user to log in and update some information          
+- The email and username fields have checks in the database so has not to have usernames and emails repeated, the application also checks the password in the database with the password passed by the user to log in and update some information          
  
 - The token expires in 6 minutes, this time is for testing the site and to see the functionalities of the token because when it expires you cannot make requests and are redirected to the login page again
 
